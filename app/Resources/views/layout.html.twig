@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ 
+    <title>{% block title %}Blog sio{% endblock %}</title>
+ 
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/stylesheets/foundation.css') }}" type="text/css" />
+    {% endblock %}
+      
+    {% javascripts %}
+        <script type="text/javascript" src="{{ asset('css/javascript/jquery.foundation.tooltips') }}"></script>
+    {% endjavascripts %}
+      
+    <!-- Header and Nav -->
+  
+  <div class="row">
+     
+    {% block logo %} 
+        <div class="three columns">
+            <a href="{{ path('homepage')}}"><img src="{{ asset('css/images/accueil/logo.png') }}" alt="Symfony!" /></a>
+        </div>
+    {% endblock %}
+      
+    <div class="eight columns">
+        <ul class="link-list right">
+            <li><a href="{{ path('sonata_admin_dashboard')}}">Administration</a></li>
+        </ul>
+    </div>
+    
+    {% block navbar %} 
+        <div class="twelve columns">
+            <ul class="nav-bar">
+                <li class="active"><a href="{{ path('homepage')}}">Accueil</a></li>
+                <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
+                <li><a href="{{ path('tperroin_projets')}}">Projets</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+      
+  </div>
+  <!-- End Header and Nav -->
+  
+  
+  <!-- First Band (Image) -->
+    
+  {% block image_accueil %}
+    <div class="row">
+        <div class="twelve columns">
+          <img src="{{ asset('css/images/accueil/image_accueil.jpg') }}" alt=""/>
+          <hr />
+        </div>      
+    </div>
+  {% endblock %}
+  
+  
+  {% block corps %}{% endblock %}
+  
+  
+  <!-- Footer -->
+  
+  <footer class="row">
+    <div class="twelve columns">
+      <hr />
+      <div class="row">
+        <div class="six columns">
+          <p>&copy; Copyright Perroin Thibault</p>
+        </div>
+        <div class="six columns">
+          <ul class="link-list right">
+            <li><a href="http://tpdoc.tpdev.fr/">tpdoc</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> 
+  </footer>

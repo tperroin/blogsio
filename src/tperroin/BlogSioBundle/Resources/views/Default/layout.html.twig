@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Blog sio{% endblock %}
+ 
+     
+        
+    {% block navbar %} 
+        <div class="twelve columns">
+            <ul class="nav-bar">
+                <li class="active"><a href="{{ path('homepage')}}">Accueil</a></li>
+                <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
+                <li><a href="{{ path('tperroin_projets')}}">Projets</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+ 

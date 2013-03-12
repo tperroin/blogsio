@@ -1,0 +1,7 @@
+parameters:
+#    tperroin_blog_sio.example.class: tperroin\BlogSioBundle\Example
+
+services:
+#    tperroin_blog_sio.example:
+#        class: %tperroin_blog_sio.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

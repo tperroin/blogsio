@@ -1,0 +1,11 @@
+tperroin_blog_sio_homepage:
+    pattern:  /
+    defaults: { _controller: tperroinBlogSioBundle:Default:index }
+    
+news:
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /news
+
+tperroin_projets:
+    pattern: /projets
+    defaults: { _controller: tperroinBlogSioBundle:Default:projets }

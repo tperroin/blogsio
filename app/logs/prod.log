@@ -1,0 +1,6 @@
+[2013-02-28 16:33:27] request.INFO: Matched route "homepage" (parameters: "_route": "homepage") [] []
+[2013-02-28 16:33:27] security.INFO: Populated SecurityContext with an anonymous Token [] []
+[2013-02-28 16:33:27] request.WARNING: Unable to look for the controller as the "_controller" parameter is missing [] []
+[2013-02-28 16:33:27] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: Unable to find the controller for path "/". Maybe you forgot to add the matching route in your routing configuration? (uncaught exception) at /var/www/sites/blog/app/bootstrap.php.cache line 1419 [] []
+[2013-02-28 16:33:28] security.DEBUG: Write SecurityContext in the session [] []
+[2013-02-28 16:33:46] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /admin" (uncaught exception) at /var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php line 92 [] []

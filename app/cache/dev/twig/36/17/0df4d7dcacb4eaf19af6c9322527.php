@@ -432,7 +432,7 @@ class __TwigTemplate_36170df4d7dcacb4eaf19af6c9322527 extends Twig_Template
     {
         // line 40
         echo "            <script src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sonatajquery/jquery-1.8.0.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sonatajquery/jquery-1.8.3.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script>
             <script src=\"";
         // line 41

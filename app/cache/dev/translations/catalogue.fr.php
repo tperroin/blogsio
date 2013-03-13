@@ -504,13 +504,6 @@ Liens de modération rapide :
     'form.label_binary_content' => 'Fichier',
     'sonata_media' => 'Médiathèque',
   ),
-  'CraueFormFlowBundle' => 
-  array (
-    'button.next' => 'suivant',
-    'button.finish' => 'terminer',
-    'button.back' => 'précédent',
-    'button.reset' => 'recommencer',
-  ),
   'messages' => 
   array (
     'Symfony2 is great' => 'J\'aime Symfony2',

@@ -7,7 +7,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.1.*",
+        "symfony/symfony": "2.1",
         "doctrine/orm": ">=2.2.3,<2.5-dev",
         "doctrine/doctrine-bundle": "1.1.*",
         "twig/extensions": "1.0.*@dev",
@@ -19,15 +19,14 @@
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
-        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/admin-bundle": "2.1.*@dev",
         "friendsofsymfony/user-bundle": "v1.3.1 as dev-master",
         "sonata-project/user-bundle": "2.1.*@dev",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "2.1.*@dev",
         "sonata-project/news-bundle": "2.1.*@dev",
         "mopa/bootstrap-bundle": "dev-master",
         "twitter/bootstrap": "dev-master",
-        "knplabs/knp-paginator-bundle": "dev-master",
-        "Trsteel/ckeditor-bundle": "dev-master"
+        "knplabs/knp-paginator-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

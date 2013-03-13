@@ -92,9 +92,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'ApplicationSonataMediaBundle', '/var/www/sites/blog/app/Resources/ApplicationSonataMediaBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'ApplicationSonataMediaBundle', '/var/www/sites/blog/src/Application/Sonata/MediaBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'KnpMenuBundle', '/var/www/sites/blog/app/Resources/KnpMenuBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'KnpMenuBundle', '/var/www/sites/blog/vendor/knplabs/knp-menu-bundle/Knp/Bundle/MenuBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'KnpPaginatorBundle', '/var/www/sites/blog/app/Resources/KnpPaginatorBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'KnpPaginatorBundle', '/var/www/sites/blog/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'CraueFormFlowBundle', '/var/www/sites/blog/app/Resources/CraueFormFlowBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'CraueFormFlowBundle', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'tperroinBlogSioBundle', '/var/www/sites/blog/app/Resources/tperroinBlogSioBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'tperroinBlogSioBundle', '/var/www/sites/blog/src/tperroin/BlogSioBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TrsteelCkeditorBundle', '/var/www/sites/blog/app/Resources/TrsteelCkeditorBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TrsteelCkeditorBundle', '/var/www/sites/blog/vendor/Trsteel/ckeditor-bundle/Trsteel/CkeditorBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', '/var/www/sites/blog/app/Resources/WebProfilerBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', '/var/www/sites/blog/app/Resources/SensioDistributionBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', '/var/www/sites/blog/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioGeneratorBundle', '/var/www/sites/blog/app/Resources/SensioGeneratorBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioGeneratorBundle', '/var/www/sites/blog/vendor/sensio/generator-bundle/Sensio/Bundle/GeneratorBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
@@ -142,6 +140,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['assetic.filter.less'] = $instance = new \Assetic\Filter\LessFilter('/usr/bin/node', array(0 => '/usr/lib/node_modules'));
 
+        $instance->setTimeout(NULL);
         $instance->setCompress(NULL);
 
         return $instance;
@@ -202,47 +201,6 @@ class appDevDebugProjectContainer extends Container
         $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, '/var/www/sites/blog/app/Resources');
 
         return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 3 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c), 4 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine')), 5 => new \JMS\DiExtraBundle\HttpKernel\ControllerInjectorsWarmer($a, $this->get('debug.controller_resolver'))));
-    }
-
-    /**
-     * Gets the 'craue.form.flow' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Craue\FormFlowBundle\Form\FormFlow A Craue\FormFlowBundle\Form\FormFlow instance.
-     */
-    protected function getCraue_Form_FlowService()
-    {
-        if (!isset($this->scopedServices['request'])) {
-            throw new InactiveScopeException('craue.form.flow', 'request');
-        }
-
-        $this->services['craue.form.flow'] = $this->scopedServices['request']['craue.form.flow'] = $instance = new \Craue\FormFlowBundle\Form\FormFlow();
-
-        $instance->setFormFactory($this->get('form.factory'));
-        $instance->setRequest($this->get('request'));
-        $instance->setStorage($this->get('craue.form.flow.storage'));
-        $instance->setEventDispatcher($this->get('event_dispatcher'));
-
-        return $instance;
-    }
-
-    /**
-     * Gets the 'craue.form.flow.storage' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Craue\FormFlowBundle\Storage\SessionStorage A Craue\FormFlowBundle\Storage\SessionStorage instance.
-     */
-    protected function getCraue_Form_Flow_StorageService()
-    {
-        if (!isset($this->scopedServices['request'])) {
-            throw new InactiveScopeException('craue.form.flow.storage', 'request');
-        }
-
-        return $this->services['craue.form.flow.storage'] = $this->scopedServices['request']['craue.form.flow.storage'] = new \Craue\FormFlowBundle\Storage\SessionStorage($this->get('session'));
     }
 
     /**
@@ -354,11 +312,11 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_513a221a6dff0.php';
+        require_once '/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_51406094862fe.php';
 
         $a = new \Doctrine\Common\Cache\ArrayCache();
         $a->setNamespace('sf2orm_default_cd87bd070b96b397e366edc69465033e');
@@ -380,9 +338,10 @@ class appDevDebugProjectContainer extends Container
         $e->addDriver($d, 'Application\\Sonata\\UserBundle\\Entity');
         $e->addDriver($d, 'Sonata\\UserBundle\\Entity');
         $e->addDriver($d, 'FOS\\UserBundle\\Entity');
+        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => '/var/www/sites/blog/src/tperroin/BlogSioBundle/Entity')), 'tperroin\\BlogSioBundle\\Entity');
 
         $f = new \Doctrine\ORM\Configuration();
-        $f->setEntityNamespaces(array('ApplicationSonataNewsBundle' => 'Application\\Sonata\\NewsBundle\\Entity', 'SonataNewsBundle' => 'Sonata\\NewsBundle\\Entity', 'SonataMediaBundle' => 'Sonata\\MediaBundle\\Entity', 'ApplicationSonataMediaBundle' => 'Application\\Sonata\\MediaBundle\\Entity', 'ApplicationSonataUserBundle' => 'Application\\Sonata\\UserBundle\\Entity', 'SonataUserBundle' => 'Sonata\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity'));
+        $f->setEntityNamespaces(array('ApplicationSonataNewsBundle' => 'Application\\Sonata\\NewsBundle\\Entity', 'SonataNewsBundle' => 'Sonata\\NewsBundle\\Entity', 'SonataMediaBundle' => 'Sonata\\MediaBundle\\Entity', 'ApplicationSonataMediaBundle' => 'Application\\Sonata\\MediaBundle\\Entity', 'ApplicationSonataUserBundle' => 'Application\\Sonata\\UserBundle\\Entity', 'SonataUserBundle' => 'Sonata\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'tperroinBlogSioBundle' => 'tperroin\\BlogSioBundle\\Entity'));
         $f->setMetadataCacheImpl($a);
         $f->setQueryCacheImpl($b);
         $f->setResultCacheImpl($c);
@@ -397,7 +356,7 @@ class appDevDebugProjectContainer extends Container
         $g = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $f);
         $this->get('doctrine.orm.default_manager_configurator')->configure($g);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($g, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($g, $this);
     }
 
     /**
@@ -544,7 +503,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getForm_RegistryService()
     {
-        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('fos_user_profile' => 'fos_user.profile.form.type', 'field' => 'form.type.field', 'form' => 'form.type.form', 'birthday' => 'form.type.birthday', 'checkbox' => 'form.type.checkbox', 'choice' => 'form.type.choice', 'collection' => 'form.type.collection', 'country' => 'form.type.country', 'date' => 'form.type.date', 'datetime' => 'form.type.datetime', 'email' => 'form.type.email', 'file' => 'form.type.file', 'hidden' => 'form.type.hidden', 'integer' => 'form.type.integer', 'language' => 'form.type.language', 'locale' => 'form.type.locale', 'money' => 'form.type.money', 'number' => 'form.type.number', 'password' => 'form.type.password', 'percent' => 'form.type.percent', 'radio' => 'form.type.radio', 'repeated' => 'form.type.repeated', 'search' => 'form.type.search', 'textarea' => 'form.type.textarea', 'text' => 'form.type.text', 'time' => 'form.type.time', 'timezone' => 'form.type.timezone', 'url' => 'form.type.url', 'entity' => 'form.type.entity', 'fos_user_username' => 'fos_user.username_form_type', 'fos_user_registration' => 'fos_user.registration.form.type', 'fos_user_change_password' => 'fos_user.change_password.form.type', 'fos_user_resetting' => 'fos_user.resetting.form.type', 'sonata_type_admin' => 'sonata.admin.form.type.admin', 'sonata_type_collection' => 'sonata.admin.form.type.collection', 'sonata_type_model' => 'sonata.admin.form.type.model_choice', 'sonata_type_model_list' => 'sonata.admin.form.type.model_list', 'sonata_type_model_reference' => 'sonata.admin.form.type.model_reference', 'sonata_type_immutable_array' => 'sonata.admin.form.type.array', 'sonata_type_boolean' => 'sonata.admin.form.type.boolean', 'sonata_type_translatable_choice' => 'sonata.admin.form.type.translatable_choice', 'sonata_type_date_range' => 'sonata.admin.form.type.date_range', 'sonata_type_datetime_range' => 'sonata.admin.form.type.datetime_range', 'sonata_type_equal' => 'sonata.admin.form.type.equal', 'sonata_type_filter_number' => 'sonata.admin.form.filter.type.number', 'sonata_type_filter_choice' => 'sonata.admin.form.filter.type.choice', 'sonata_type_filter_default' => 'sonata.admin.form.filter.type.default', 'sonata_type_filter_date' => 'sonata.admin.form.filter.type.date', 'sonata_type_filter_date_range' => 'sonata.admin.form.filter.type.daterange', 'sonata_type_filter_datetime' => 'sonata.admin.form.filter.type.datetime', 'sonata_type_filter_datetime_range' => 'sonata.admin.form.filter.type.datetime_range', 'sonata_block_service_choice' => 'sonata.block.form.type.block', 'sonata_security_roles' => 'sonata.user.form.type.security_roles', 'sonata_user_profile' => 'sonata.user.profile.form.type', 'ckeditor' => 'trsteel_ckeditor.form.type', 'sonata_post_comment' => 'sonata.news.form.type.comment', 'sonata_media_type' => 'sonata.media.form.type.media', 'sonata_formatter_type_selector' => 'sonata.formatter.form.type.selector'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'sonata.admin.form.extension.field'), 'repeated' => array(0 => 'form.type_extension.repeated.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
+        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('fos_user_profile' => 'fos_user.profile.form.type', 'field' => 'form.type.field', 'form' => 'form.type.form', 'birthday' => 'form.type.birthday', 'checkbox' => 'form.type.checkbox', 'choice' => 'form.type.choice', 'collection' => 'form.type.collection', 'country' => 'form.type.country', 'date' => 'form.type.date', 'datetime' => 'form.type.datetime', 'email' => 'form.type.email', 'file' => 'form.type.file', 'hidden' => 'form.type.hidden', 'integer' => 'form.type.integer', 'language' => 'form.type.language', 'locale' => 'form.type.locale', 'money' => 'form.type.money', 'number' => 'form.type.number', 'password' => 'form.type.password', 'percent' => 'form.type.percent', 'radio' => 'form.type.radio', 'repeated' => 'form.type.repeated', 'search' => 'form.type.search', 'textarea' => 'form.type.textarea', 'text' => 'form.type.text', 'time' => 'form.type.time', 'timezone' => 'form.type.timezone', 'url' => 'form.type.url', 'entity' => 'form.type.entity', 'fos_user_username' => 'fos_user.username_form_type', 'fos_user_registration' => 'fos_user.registration.form.type', 'fos_user_change_password' => 'fos_user.change_password.form.type', 'fos_user_resetting' => 'fos_user.resetting.form.type', 'sonata_type_admin' => 'sonata.admin.form.type.admin', 'sonata_type_collection' => 'sonata.admin.form.type.collection', 'sonata_type_model' => 'sonata.admin.form.type.model_choice', 'sonata_type_model_list' => 'sonata.admin.form.type.model_list', 'sonata_type_model_reference' => 'sonata.admin.form.type.model_reference', 'sonata_type_immutable_array' => 'sonata.admin.form.type.array', 'sonata_type_boolean' => 'sonata.admin.form.type.boolean', 'sonata_type_translatable_choice' => 'sonata.admin.form.type.translatable_choice', 'sonata_type_date_range' => 'sonata.admin.form.type.date_range', 'sonata_type_datetime_range' => 'sonata.admin.form.type.datetime_range', 'sonata_type_equal' => 'sonata.admin.form.type.equal', 'sonata_type_filter_number' => 'sonata.admin.form.filter.type.number', 'sonata_type_filter_choice' => 'sonata.admin.form.filter.type.choice', 'sonata_type_filter_default' => 'sonata.admin.form.filter.type.default', 'sonata_type_filter_date' => 'sonata.admin.form.filter.type.date', 'sonata_type_filter_date_range' => 'sonata.admin.form.filter.type.daterange', 'sonata_type_filter_datetime' => 'sonata.admin.form.filter.type.datetime', 'sonata_type_filter_datetime_range' => 'sonata.admin.form.filter.type.datetime_range', 'sonata_block_service_choice' => 'sonata.block.form.type.block', 'sonata_security_roles' => 'sonata.user.form.type.security_roles', 'sonata_user_profile' => 'sonata.user.profile.form.type', 'ckeditor' => 'form.type.ckeditor', 'sonata_post_comment' => 'sonata.news.form.type.comment', 'sonata_media_type' => 'sonata.media.form.type.media', 'sonata_formatter_type_selector' => 'sonata.formatter.form.type.selector'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'sonata.admin.form.extension.field'), 'repeated' => array(0 => 'form.type_extension.repeated.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
     }
 
     /**
@@ -2080,7 +2039,7 @@ class appDevDebugProjectContainer extends Container
         $g = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($d, array('login_path' => '/admin/login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
         $g->setProviderKey('admin');
 
-        return $this->services['security.firewall.map.context.admin'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'admin', $b, $c), 2 => $f, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $this->get('security.authentication.manager'), $this->get('security.authentication.session_strategy'), $d, 'admin', $g, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $d, array('login_path' => '/admin/login', 'failure_path' => NULL, 'failure_forward' => false), $b), array('check_path' => '/admin/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $b, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '513a221892290', $b), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $d, 'admin', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $d, '/admin/login', false), NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.admin'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'admin', $b, $c), 2 => $f, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $this->get('security.authentication.manager'), $this->get('security.authentication.session_strategy'), $d, 'admin', $g, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $d, array('login_path' => '/admin/login', 'failure_path' => NULL, 'failure_forward' => false), $b), array('check_path' => '/admin/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $b, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '5140609200f33', $b), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $d, 'admin', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $d, '/admin/login', false), NULL, NULL, $b));
     }
 
     /**
@@ -2105,7 +2064,7 @@ class appDevDebugProjectContainer extends Container
         $g = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($d, array('login_path' => '/login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
         $g->setProviderKey('main');
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'main', $b, $c), 2 => $f, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $this->get('security.authentication.manager'), $this->get('security.authentication.session_strategy'), $d, 'main', $g, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $d, array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false), $b), array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $b, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '513a221892290', $b), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $d, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $d, '/login', false), NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('fos_user.user_manager')), 'main', $b, $c), 2 => $f, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $this->get('security.authentication.manager'), $this->get('security.authentication.session_strategy'), $d, 'main', $g, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $d, array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false), $b), array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $b, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '5140609200f33', $b), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $d, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $d, '/login', false), NULL, NULL, $b));
     }
 
     /**
@@ -5441,9 +5400,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf', 'ru', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf', 'pt', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf', 'ro', 'validators');
-        $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf', 'bg', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf', 'lt', 'validators');
-        $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf', 'uk', 'validators');
+        $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ua.xlf', 'ua', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf', 'sv', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf', 'sk', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf', 'eu', 'validators');
@@ -5477,7 +5435,6 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf', 'ru', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf', 'pt', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf', 'ro', 'validators');
-        $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.bg.xlf', 'bg', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf', 'lt', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ua.xlf', 'ua', 'validators');
         $instance->addResource('xlf', '/var/www/sites/blog/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf', 'sv', 'validators');
@@ -5606,76 +5563,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('xliff', '/var/www/sites/blog/vendor/sonata-project/media-bundle/Sonata/MediaBundle/Resources/translations/SonataMediaBundle.en.xliff', 'en', 'SonataMediaBundle');
         $instance->addResource('xliff', '/var/www/sites/blog/vendor/sonata-project/media-bundle/Sonata/MediaBundle/Resources/translations/SonataMediaBundle.es.xliff', 'es', 'SonataMediaBundle');
         $instance->addResource('xliff', '/var/www/sites/blog/vendor/sonata-project/media-bundle/Sonata/MediaBundle/Resources/translations/SonataMediaBundle.pl.xliff', 'pl', 'SonataMediaBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.de.yml', 'de', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.uk.yml', 'uk', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.nl.yml', 'nl', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.ru.yml', 'ru', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.pl.yml', 'pl', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.fr.yml', 'fr', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.en.yml', 'en', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.es.yml', 'es', 'CraueFormFlowBundle');
-        $instance->addResource('yml', '/var/www/sites/blog/vendor/craue/formflow-bundle/Craue/FormFlowBundle/Resources/translations/CraueFormFlowBundle.zh.yml', 'zh', 'CraueFormFlowBundle');
         $instance->addResource('xlf', '/var/www/sites/blog/src/tperroin/BlogSioBundle/Resources/translations/messages.fr.xlf', 'fr', 'messages');
 
         return $instance;
-    }
-
-    /**
-     * Gets the 'trsteel_ckeditor.form.type' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Trsteel\CkeditorBundle\Form\Type\CkeditorType A Trsteel\CkeditorBundle\Form\Type\CkeditorType instance.
-     */
-    protected function getTrsteelCkeditor_Form_TypeService()
-    {
-        $this->services['trsteel_ckeditor.form.type'] = $instance = new \Trsteel\CkeditorBundle\Form\Type\CkeditorType($this);
-
-        $instance->addTransformer($this->get('trsteel_ckeditor.transformer.strip_js'), 'strip_js');
-        $instance->addTransformer($this->get('trsteel_ckeditor.transformer.strip_css'), 'strip_css');
-        $instance->addTransformer($this->get('trsteel_ckeditor.transformer.strip_comments'), 'strip_comments');
-
-        return $instance;
-    }
-
-    /**
-     * Gets the 'trsteel_ckeditor.transformer.strip_comments' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Trsteel\CkeditorBundle\Form\Transformer\StripComments A Trsteel\CkeditorBundle\Form\Transformer\StripComments instance.
-     */
-    protected function getTrsteelCkeditor_Transformer_StripCommentsService()
-    {
-        return $this->services['trsteel_ckeditor.transformer.strip_comments'] = new \Trsteel\CkeditorBundle\Form\Transformer\StripComments();
-    }
-
-    /**
-     * Gets the 'trsteel_ckeditor.transformer.strip_css' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Trsteel\CkeditorBundle\Form\Transformer\StripCSS A Trsteel\CkeditorBundle\Form\Transformer\StripCSS instance.
-     */
-    protected function getTrsteelCkeditor_Transformer_StripCssService()
-    {
-        return $this->services['trsteel_ckeditor.transformer.strip_css'] = new \Trsteel\CkeditorBundle\Form\Transformer\StripCSS();
-    }
-
-    /**
-     * Gets the 'trsteel_ckeditor.transformer.strip_js' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Trsteel\CkeditorBundle\Form\Transformer\StripJS A Trsteel\CkeditorBundle\Form\Transformer\StripJS instance.
-     */
-    protected function getTrsteelCkeditor_Transformer_StripJsService()
-    {
-        return $this->services['trsteel_ckeditor.transformer.strip_js'] = new \Trsteel\CkeditorBundle\Form\Transformer\StripJS();
     }
 
     /**
@@ -5709,9 +5599,9 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\CodeExtension($this));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\RoutingExtension($b));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig', 1 => 'SonataUserBundle:Form:form_admin_fields.html.twig', 2 => 'IvoryCKEditorBundle:Form:ckeditor_widget.html.twig', 3 => 'TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig')), $this->get('form.csrf_provider'))));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig', 1 => 'SonataUserBundle:Form:form_admin_fields.html.twig', 2 => 'IvoryCKEditorBundle:Form:ckeditor_widget.html.twig')), $this->get('form.csrf_provider'))));
         $instance->addExtension(new \Twig_Extension_Debug());
-        $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), true, array(), array(0 => 'FrameworkBundle', 1 => 'SecurityBundle', 2 => 'TwigBundle', 3 => 'MonologBundle', 4 => 'SwiftmailerBundle', 5 => 'AsseticBundle', 6 => 'DoctrineBundle', 7 => 'SensioFrameworkExtraBundle', 8 => 'JMSAopBundle', 9 => 'JMSDiExtraBundle', 10 => 'JMSSecurityExtraBundle', 11 => 'FOSUserBundle', 12 => 'SonatajQueryBundle', 13 => 'SonataAdminBundle', 14 => 'SonataBlockBundle', 15 => 'SonataDoctrineORMAdminBundle', 16 => 'SonataUserBundle', 17 => 'SonataEasyExtendsBundle', 18 => 'ApplicationSonataUserBundle', 19 => 'SonataMarkItUpBundle', 20 => 'IvoryCKEditorBundle', 21 => 'SonataNewsBundle', 22 => 'SonataMediaBundle', 23 => 'SonataIntlBundle', 24 => 'SonataFormatterBundle', 25 => 'KnpMarkdownBundle', 26 => 'ApplicationSonataNewsBundle', 27 => 'ApplicationSonataMediaBundle', 28 => 'KnpMenuBundle', 29 => 'KnpPaginatorBundle', 30 => 'CraueFormFlowBundle', 31 => 'tperroinBlogSioBundle', 32 => 'TrsteelCkeditorBundle', 33 => 'WebProfilerBundle', 34 => 'SensioDistributionBundle', 35 => 'SensioGeneratorBundle'), $this->get('assetic.value_supplier.default')));
+        $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), true, array(), array(0 => 'FrameworkBundle', 1 => 'SecurityBundle', 2 => 'TwigBundle', 3 => 'MonologBundle', 4 => 'SwiftmailerBundle', 5 => 'AsseticBundle', 6 => 'DoctrineBundle', 7 => 'SensioFrameworkExtraBundle', 8 => 'JMSAopBundle', 9 => 'JMSDiExtraBundle', 10 => 'JMSSecurityExtraBundle', 11 => 'FOSUserBundle', 12 => 'SonatajQueryBundle', 13 => 'SonataAdminBundle', 14 => 'SonataBlockBundle', 15 => 'SonataDoctrineORMAdminBundle', 16 => 'SonataUserBundle', 17 => 'SonataEasyExtendsBundle', 18 => 'ApplicationSonataUserBundle', 19 => 'SonataMarkItUpBundle', 20 => 'IvoryCKEditorBundle', 21 => 'SonataNewsBundle', 22 => 'SonataMediaBundle', 23 => 'SonataIntlBundle', 24 => 'SonataFormatterBundle', 25 => 'KnpMarkdownBundle', 26 => 'ApplicationSonataNewsBundle', 27 => 'ApplicationSonataMediaBundle', 28 => 'KnpMenuBundle', 29 => 'KnpPaginatorBundle', 30 => 'tperroinBlogSioBundle', 31 => 'WebProfilerBundle', 32 => 'SensioDistributionBundle', 33 => 'SensioGeneratorBundle'), $this->get('assetic.value_supplier.default')));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
         $instance->addExtension(new \JMS\SecurityExtraBundle\Twig\SecurityExtension($a));
         $instance->addExtension($this->get('sonata.admin.twig.extension'));
@@ -5726,8 +5616,6 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Knp\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension($d));
         $instance->addExtension(new \Knp\Menu\Twig\MenuExtension(new \Knp\Menu\Twig\Helper($this->get('knp_menu.renderer_provider'), $this->get('knp_menu.menu_provider'))));
         $instance->addExtension($this->get('knp_paginator.twig.extension.pagination'));
-        $instance->addExtension($this->get('twig.extension.craue_formflow'));
-        $instance->addGlobal('app', $this->get('templating.globals'));
         $instance->addGlobal('sonata_block', $this->get('sonata.block.twig.global'));
         $instance->addGlobal('sonata_user', $this->get('sonata.user.twig.global'));
 
@@ -5745,19 +5633,6 @@ class appDevDebugProjectContainer extends Container
     protected function getTwig_ExceptionListenerService()
     {
         return $this->services['twig.exception_listener'] = new \Symfony\Component\HttpKernel\EventListener\ExceptionListener('Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction', $this->get('monolog.logger.request'));
-    }
-
-    /**
-     * Gets the 'twig.extension.craue_formflow' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Craue\FormFlowBundle\Twig\Extension\FormFlowExtension A Craue\FormFlowBundle\Twig\Extension\FormFlowExtension instance.
-     */
-    protected function getTwig_Extension_CraueFormflowService()
-    {
-        return $this->services['twig.extension.craue_formflow'] = new \Craue\FormFlowBundle\Twig\Extension\FormFlowExtension();
     }
 
     /**
@@ -5850,7 +5725,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -5920,7 +5795,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the sonata.media.entity_manager service alias.
      *
-     * @return EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getSonata_Media_EntityManagerService()
     {
@@ -5930,7 +5805,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the sonata.news.entity_manager service alias.
      *
-     * @return EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getSonata_News_EntityManagerService()
     {
@@ -5948,13 +5823,23 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the sonata_user_authentication_form_factory service alias.
+     * Gets the sonata_user_authentication_form service alias.
      *
-     * @return Application\FOS\UserBundle\Form\Type\ProfileFormType An instance of the fos_user.profile.form.factory service
+     * @return Symfony\Component\Form\Form An instance of the fos_user.profile.form service
      */
-    protected function getSonataUserAuthenticationFormFactoryService()
+    protected function getSonataUserAuthenticationFormService()
     {
-        return $this->get('fos_user.profile.form.factory');
+        return $this->get('fos_user.profile.form');
+    }
+
+    /**
+     * Gets the sonata_user_authentication_form_handler service alias.
+     *
+     * @return FOS\UserBundle\Form\Handler\ProfileFormHandler An instance of the fos_user.profile.form.handler service
+     */
+    protected function getSonataUserAuthenticationFormHandlerService()
+    {
+        return $this->get('fos_user.profile.form.handler');
     }
 
     /**
@@ -6160,7 +6045,7 @@ class appDevDebugProjectContainer extends Container
         $b = $this->get('security.user_checker');
         $c = $this->get('security.encoder_factory');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($a, $b, 'admin', $c, true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('513a221892290'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($a, $b, 'main', $c, true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('513a221892290')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($a, $b, 'admin', $c, true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5140609200f33'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($a, $b, 'main', $c, true), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5140609200f33')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -6557,9 +6442,7 @@ class appDevDebugProjectContainer extends Container
                 'ApplicationSonataMediaBundle' => 'Application\\Sonata\\MediaBundle\\ApplicationSonataMediaBundle',
                 'KnpMenuBundle' => 'Knp\\Bundle\\MenuBundle\\KnpMenuBundle',
                 'KnpPaginatorBundle' => 'Knp\\Bundle\\PaginatorBundle\\KnpPaginatorBundle',
-                'CraueFormFlowBundle' => 'Craue\\FormFlowBundle\\CraueFormFlowBundle',
                 'tperroinBlogSioBundle' => 'tperroin\\BlogSioBundle\\tperroinBlogSioBundle',
-                'TrsteelCkeditorBundle' => 'Trsteel\\CkeditorBundle\\TrsteelCkeditorBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
                 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle',
@@ -6620,9 +6503,6 @@ class appDevDebugProjectContainer extends Container
             'debug.container.dump' => '/var/www/sites/blog/app/cache/dev/appDevDebugProjectContainer.xml',
             'debug.controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TraceableControllerResolver',
             'kernel.secret' => '0088d36385bbb5c1c51504a70cf0a4868616253a',
-            'kernel.trusted_proxies' => array(
-
-            ),
             'kernel.trust_proxy_headers' => false,
             'kernel.default_locale' => 'fr',
             'session.class' => 'Symfony\\Component\\HttpFoundation\\Session\\Session',
@@ -6838,7 +6718,6 @@ class appDevDebugProjectContainer extends Container
                 0 => 'form_div_layout.html.twig',
                 1 => 'SonataUserBundle:Form:form_admin_fields.html.twig',
                 2 => 'IvoryCKEditorBundle:Form:ckeditor_widget.html.twig',
-                3 => 'TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig',
             ),
             'twig.options' => array(
                 'debug' => true,
@@ -6950,12 +6829,10 @@ class appDevDebugProjectContainer extends Container
                 27 => 'ApplicationSonataMediaBundle',
                 28 => 'KnpMenuBundle',
                 29 => 'KnpPaginatorBundle',
-                30 => 'CraueFormFlowBundle',
-                31 => 'tperroinBlogSioBundle',
-                32 => 'TrsteelCkeditorBundle',
-                33 => 'WebProfilerBundle',
-                34 => 'SensioDistributionBundle',
-                35 => 'SensioGeneratorBundle',
+                30 => 'tperroinBlogSioBundle',
+                31 => 'WebProfilerBundle',
+                32 => 'SensioDistributionBundle',
+                33 => 'SensioGeneratorBundle',
             ),
             'assetic.twig_extension.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\AsseticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
@@ -6980,6 +6857,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.filter.less.node_paths' => array(
                 0 => '/usr/lib/node_modules',
             ),
+            'assetic.filter.less.timeout' => NULL,
             'assetic.filter.less.compress' => NULL,
             'assetic.twig_extension.functions' => array(
 
@@ -7079,8 +6957,8 @@ class appDevDebugProjectContainer extends Container
             ),
             'jms_di_extra.cache_dir' => '/var/www/sites/blog/app/cache/dev/jms_diextra',
             'jms_di_extra.doctrine_integration' => true,
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_513a221a6dff0.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager513a221a6dff0_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_51406094862fe.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),
@@ -7382,157 +7260,6 @@ class appDevDebugProjectContainer extends Container
             'knp_paginator.template.filtration' => 'KnpPaginatorBundle:Pagination:filtration.html.twig',
             'knp_paginator.template.sortable' => 'KnpPaginatorBundle:Pagination:sortable_link.html.twig',
             'knp_paginator.page_range' => 5,
-            'craue.form.flow.class' => 'Craue\\FormFlowBundle\\Form\\FormFlow',
-            'craue.form.flow.storage.class' => 'Craue\\FormFlowBundle\\Storage\\SessionStorage',
-            'craue_twig_extensions.formflow.class' => 'Craue\\FormFlowBundle\\Twig\\Extension\\FormFlowExtension',
-            'trsteel_ckeditor.form.type.class' => 'Trsteel\\CkeditorBundle\\Form\\Type\\CkeditorType',
-            'trsteel_ckeditor.ckeditor.transformers' => array(
-                0 => 'strip_js',
-                1 => 'strip_css',
-                2 => 'strip_comments',
-            ),
-            'trsteel_ckeditor.ckeditor.toolbar' => array(
-                0 => 'document',
-                1 => 'clipboard',
-                2 => 'editing',
-                3 => '/',
-                4 => 'basicstyles',
-                5 => 'paragraph',
-                6 => 'links',
-                7 => '/',
-                8 => 'insert',
-                9 => 'styles',
-                10 => 'tools',
-            ),
-            'trsteel_ckeditor.ckeditor.toolbar_groups' => array(
-                'document' => array(
-                    0 => 'Source',
-                    1 => '-',
-                    2 => 'Save',
-                    3 => '-',
-                    4 => 'Templates',
-                ),
-                'clipboard' => array(
-                    0 => 'Cut',
-                    1 => 'Copy',
-                    2 => 'Paste',
-                    3 => 'PasteText',
-                    4 => 'PasteFromWord',
-                    5 => '-',
-                    6 => 'Undo',
-                    7 => 'Redo',
-                ),
-                'editing' => array(
-                    0 => 'Find',
-                    1 => 'Replace',
-                    2 => '-',
-                    3 => 'SelectAll',
-                ),
-                'basicstyles' => array(
-                    0 => 'Bold',
-                    1 => 'Italic',
-                    2 => 'Underline',
-                    3 => 'Strike',
-                    4 => 'Subscript',
-                    5 => 'Superscript',
-                    6 => '-',
-                    7 => 'RemoveFormat',
-                ),
-                'paragraph' => array(
-                    0 => 'NumberedList',
-                    1 => 'BulletedList',
-                    2 => '-',
-                    3 => 'Outdent',
-                    4 => 'Indent',
-                    5 => '-',
-                    6 => 'JustifyLeft',
-                    7 => 'JustifyCenter',
-                    8 => 'JustifyRight',
-                    9 => 'JustifyBlock',
-                ),
-                'links' => array(
-                    0 => 'Link',
-                    1 => 'Unlink',
-                    2 => 'Anchor',
-                ),
-                'insert' => array(
-                    0 => 'Image',
-                    1 => 'Flash',
-                    2 => 'Table',
-                    3 => 'HorizontalRule',
-                ),
-                'styles' => array(
-                    0 => 'Styles',
-                    1 => 'Format',
-                ),
-                'tools' => array(
-                    0 => 'Maximize',
-                    1 => 'ShowBlocks',
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.startup_outline_blocks' => true,
-            'trsteel_ckeditor.ckeditor.ui_color' => '#000000',
-            'trsteel_ckeditor.ckeditor.width' => '80%',
-            'trsteel_ckeditor.ckeditor.height' => '80%',
-            'trsteel_ckeditor.ckeditor.force_paste_as_plaintext' => NULL,
-            'trsteel_ckeditor.ckeditor.language' => 'fr-FR',
-            'trsteel_ckeditor.ckeditor.filebrowser_browse_url' => array(
-                'url' => NULL,
-                'route' => NULL,
-                'route_parameters' => array(
-
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.filebrowser_upload_url' => array(
-                'url' => NULL,
-                'route' => NULL,
-                'route_parameters' => array(
-
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.filebrowser_image_browse_url' => array(
-                'url' => NULL,
-                'route' => NULL,
-                'route_parameters' => array(
-
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.filebrowser_image_upload_url' => array(
-                'url' => NULL,
-                'route' => NULL,
-                'route_parameters' => array(
-
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url' => array(
-                'url' => NULL,
-                'route' => NULL,
-                'route_parameters' => array(
-
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url' => array(
-                'url' => NULL,
-                'route' => NULL,
-                'route_parameters' => array(
-
-                ),
-            ),
-            'trsteel_ckeditor.ckeditor.skin' => NULL,
-            'trsteel_ckeditor.ckeditor.format_tags' => array(
-
-            ),
-            'trsteel_ckeditor.ckeditor.base_path' => 'bundles/trsteelckeditor/',
-            'trsteel_ckeditor.ckeditor.base_href' => NULL,
-            'trsteel_ckeditor.ckeditor.body_class' => NULL,
-            'trsteel_ckeditor.ckeditor.contents_css' => NULL,
-            'trsteel_ckeditor.ckeditor.basic_entities' => NULL,
-            'trsteel_ckeditor.ckeditor.entities' => NULL,
-            'trsteel_ckeditor.ckeditor.entities_latin' => NULL,
-            'trsteel_ckeditor.ckeditor.startup_mode' => NULL,
-            'trsteel_ckeditor.ckeditor.external_plugins' => array(
-
-            ),
             'web_profiler.debug_toolbar.class' => 'Symfony\\Bundle\\WebProfilerBundle\\EventListener\\WebDebugToolbarListener',
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,

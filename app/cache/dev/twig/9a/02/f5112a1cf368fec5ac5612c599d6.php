@@ -24,7 +24,7 @@ class __TwigTemplate_9a02f5112a1cf368fec5ac5612c599d6 extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_e27c1b413bd41e6c1a11aeeb15d0d42a93e9c959"] = $this;
+        $context["__internal_fec7c907014d0fe034855cbccadad307e38a70fa"] = $this;
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -57,7 +57,7 @@ class __TwigTemplate_9a02f5112a1cf368fec5ac5612c599d6 extends Twig_Template
             // line 16
             echo "        <h2>Events</h2>
         <p>
-            <em>No events have been recorded. Are you sure that debugging is enabled in the kernel?</em>
+            <em>No events have been recorded. Are you sure that debugging is enabled in the kernel ?</em>
         </p>
     ";
         }
@@ -92,7 +92,7 @@ class __TwigTemplate_9a02f5112a1cf368fec5ac5612c599d6 extends Twig_Template
             echo "</code></td>
                 <td><code>";
             // line 36
-            echo $context["__internal_e27c1b413bd41e6c1a11aeeb15d0d42a93e9c959"]->getdisplay_listener($this->getContext($context, "listener"));
+            echo $context["__internal_fec7c907014d0fe034855cbccadad307e38a70fa"]->getdisplay_listener($this->getContext($context, "listener"));
             echo "</code></td>
             </tr>
         ";
@@ -135,7 +135,7 @@ class __TwigTemplate_9a02f5112a1cf368fec5ac5612c599d6 extends Twig_Template
                 echo "</code></td>
                     <td><code>";
                 // line 55
-                echo $context["__internal_e27c1b413bd41e6c1a11aeeb15d0d42a93e9c959"]->getdisplay_listener($this->getAttribute($this->getContext($context, "listeners"), $this->getContext($context, "listener"), array(), "array"));
+                echo $context["__internal_fec7c907014d0fe034855cbccadad307e38a70fa"]->getdisplay_listener($this->getAttribute($this->getContext($context, "listeners"), $this->getContext($context, "listener"), array(), "array"));
                 echo "</code></td>
                 </tr>
             ";

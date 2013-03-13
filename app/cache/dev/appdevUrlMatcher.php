@@ -31,7 +31,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // _wdt
-        if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?P<token>[^/]+)$#s', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',)), array('_route' => '_wdt'));
         }
 
@@ -47,7 +47,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // _profiler_info
-            if (0 === strpos($pathinfo, '/_profiler/info') && preg_match('#^/_profiler/info/(?P<about>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/_profiler/info') && preg_match('#^/_profiler/info/(?<about>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::infoAction',)), array('_route' => '_profiler_info'));
             }
 
@@ -57,7 +57,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // _profiler_export
-            if (0 === strpos($pathinfo, '/_profiler/export') && preg_match('#^/_profiler/export/(?P<token>[^/\\.]+)\\.txt$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/_profiler/export') && preg_match('#^/_profiler/export/(?<token>[^/\\.]+)\\.txt$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::exportAction',)), array('_route' => '_profiler_export'));
             }
 
@@ -67,12 +67,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // _profiler_search_results
-            if (preg_match('#^/_profiler/(?P<token>[^/]+)/search/results$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/_profiler/(?<token>[^/]+)/search/results$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::searchResultsAction',)), array('_route' => '_profiler_search_results'));
             }
 
             // _profiler
-            if (preg_match('#^/_profiler/(?P<token>[^/]+)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/_profiler/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::panelAction',)), array('_route' => '_profiler'));
             }
 
@@ -98,7 +98,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // _configurator_step
-            if (0 === strpos($pathinfo, '/_configurator/step') && preg_match('#^/_configurator/step/(?P<index>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/_configurator/step') && preg_match('#^/_configurator/step/(?<index>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::stepAction',)), array('_route' => '_configurator_step'));
             }
 
@@ -197,7 +197,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_registration_check_email:
 
             // fos_user_registration_confirm
-            if (0 === strpos($pathinfo, '/register/confirm') && preg_match('#^/register/confirm/(?P<token>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/register/confirm') && preg_match('#^/register/confirm/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_confirm;
@@ -255,7 +255,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_resetting_check_email:
 
             // fos_user_resetting_reset
-            if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_fos_user_resetting_reset;
@@ -341,17 +341,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_user_user_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/user/user') && preg_match('#^/admin/sonata/user/user/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/user/user') && preg_match('#^/admin/sonata/user/user/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.user.admin.user',  '_sonata_name' => 'admin_sonata_user_user_edit',)), array('_route' => 'admin_sonata_user_user_edit'));
             }
 
             // admin_sonata_user_user_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/user/user') && preg_match('#^/admin/sonata/user/user/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/user/user') && preg_match('#^/admin/sonata/user/user/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.user.admin.user',  '_sonata_name' => 'admin_sonata_user_user_delete',)), array('_route' => 'admin_sonata_user_user_delete'));
             }
 
             // admin_sonata_user_user_show
-            if (0 === strpos($pathinfo, '/admin/sonata/user/user') && preg_match('#^/admin/sonata/user/user/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/user/user') && preg_match('#^/admin/sonata/user/user/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.user.admin.user',  '_sonata_name' => 'admin_sonata_user_user_show',)), array('_route' => 'admin_sonata_user_user_show'));
             }
 
@@ -376,17 +376,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_user_group_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/user/group') && preg_match('#^/admin/sonata/user/group/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/user/group') && preg_match('#^/admin/sonata/user/group/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.user.admin.group',  '_sonata_name' => 'admin_sonata_user_group_edit',)), array('_route' => 'admin_sonata_user_group_edit'));
             }
 
             // admin_sonata_user_group_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/user/group') && preg_match('#^/admin/sonata/user/group/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/user/group') && preg_match('#^/admin/sonata/user/group/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.user.admin.group',  '_sonata_name' => 'admin_sonata_user_group_delete',)), array('_route' => 'admin_sonata_user_group_delete'));
             }
 
             // admin_sonata_user_group_show
-            if (0 === strpos($pathinfo, '/admin/sonata/user/group') && preg_match('#^/admin/sonata/user/group/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/user/group') && preg_match('#^/admin/sonata/user/group/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.user.admin.group',  '_sonata_name' => 'admin_sonata_user_group_show',)), array('_route' => 'admin_sonata_user_group_show'));
             }
 
@@ -411,17 +411,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_news_post_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.news.admin.post',  '_sonata_name' => 'admin_sonata_news_post_edit',)), array('_route' => 'admin_sonata_news_post_edit'));
             }
 
             // admin_sonata_news_post_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.news.admin.post',  '_sonata_name' => 'admin_sonata_news_post_delete',)), array('_route' => 'admin_sonata_news_post_delete'));
             }
 
             // admin_sonata_news_post_show
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.news.admin.post',  '_sonata_name' => 'admin_sonata_news_post_show',)), array('_route' => 'admin_sonata_news_post_show'));
             }
 
@@ -431,37 +431,37 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_news_post_comment_list
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/list$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/list$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_list',)), array('_route' => 'admin_sonata_news_post_comment_list'));
             }
 
             // admin_sonata_news_post_comment_create
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/create$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/create$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_create',)), array('_route' => 'admin_sonata_news_post_comment_create'));
             }
 
             // admin_sonata_news_post_comment_batch
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/batch$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/batch$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_batch',)), array('_route' => 'admin_sonata_news_post_comment_batch'));
             }
 
             // admin_sonata_news_post_comment_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/(?P<childId>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/(?<childId>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_edit',)), array('_route' => 'admin_sonata_news_post_comment_edit'));
             }
 
             // admin_sonata_news_post_comment_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/(?P<childId>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/(?<childId>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_delete',)), array('_route' => 'admin_sonata_news_post_comment_delete'));
             }
 
             // admin_sonata_news_post_comment_show
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/(?P<childId>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/(?<childId>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_show',)), array('_route' => 'admin_sonata_news_post_comment_show'));
             }
 
             // admin_sonata_news_post_comment_export
-            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?P<id>[^/]+)/comment/export$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/post') && preg_match('#^/admin/sonata/news/post/(?<id>[^/]+)/comment/export$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.news.admin.post|sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_post_comment_export',)), array('_route' => 'admin_sonata_news_post_comment_export'));
             }
 
@@ -481,17 +481,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_news_comment_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/news/comment') && preg_match('#^/admin/sonata/news/comment/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/comment') && preg_match('#^/admin/sonata/news/comment/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_comment_edit',)), array('_route' => 'admin_sonata_news_comment_edit'));
             }
 
             // admin_sonata_news_comment_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/news/comment') && preg_match('#^/admin/sonata/news/comment/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/comment') && preg_match('#^/admin/sonata/news/comment/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_comment_delete',)), array('_route' => 'admin_sonata_news_comment_delete'));
             }
 
             // admin_sonata_news_comment_show
-            if (0 === strpos($pathinfo, '/admin/sonata/news/comment') && preg_match('#^/admin/sonata/news/comment/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/comment') && preg_match('#^/admin/sonata/news/comment/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.news.admin.comment',  '_sonata_name' => 'admin_sonata_news_comment_show',)), array('_route' => 'admin_sonata_news_comment_show'));
             }
 
@@ -516,17 +516,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_news_category_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/news/category') && preg_match('#^/admin/sonata/news/category/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/category') && preg_match('#^/admin/sonata/news/category/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.news.admin.category',  '_sonata_name' => 'admin_sonata_news_category_edit',)), array('_route' => 'admin_sonata_news_category_edit'));
             }
 
             // admin_sonata_news_category_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/news/category') && preg_match('#^/admin/sonata/news/category/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/category') && preg_match('#^/admin/sonata/news/category/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.news.admin.category',  '_sonata_name' => 'admin_sonata_news_category_delete',)), array('_route' => 'admin_sonata_news_category_delete'));
             }
 
             // admin_sonata_news_category_show
-            if (0 === strpos($pathinfo, '/admin/sonata/news/category') && preg_match('#^/admin/sonata/news/category/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/category') && preg_match('#^/admin/sonata/news/category/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.news.admin.category',  '_sonata_name' => 'admin_sonata_news_category_show',)), array('_route' => 'admin_sonata_news_category_show'));
             }
 
@@ -551,17 +551,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_news_tag_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/news/tag') && preg_match('#^/admin/sonata/news/tag/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/tag') && preg_match('#^/admin/sonata/news/tag/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.news.admin.tag',  '_sonata_name' => 'admin_sonata_news_tag_edit',)), array('_route' => 'admin_sonata_news_tag_edit'));
             }
 
             // admin_sonata_news_tag_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/news/tag') && preg_match('#^/admin/sonata/news/tag/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/tag') && preg_match('#^/admin/sonata/news/tag/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.news.admin.tag',  '_sonata_name' => 'admin_sonata_news_tag_delete',)), array('_route' => 'admin_sonata_news_tag_delete'));
             }
 
             // admin_sonata_news_tag_show
-            if (0 === strpos($pathinfo, '/admin/sonata/news/tag') && preg_match('#^/admin/sonata/news/tag/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/news/tag') && preg_match('#^/admin/sonata/news/tag/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.news.admin.tag',  '_sonata_name' => 'admin_sonata_news_tag_show',)), array('_route' => 'admin_sonata_news_tag_show'));
             }
 
@@ -586,17 +586,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_media_media_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\MediaAdminController::editAction',  '_sonata_admin' => 'sonata.media.admin.media',  '_sonata_name' => 'admin_sonata_media_media_edit',)), array('_route' => 'admin_sonata_media_media_edit'));
             }
 
             // admin_sonata_media_media_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\MediaAdminController::deleteAction',  '_sonata_admin' => 'sonata.media.admin.media',  '_sonata_name' => 'admin_sonata_media_media_delete',)), array('_route' => 'admin_sonata_media_media_delete'));
             }
 
             // admin_sonata_media_media_show
-            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\MediaAdminController::viewAction',  '_sonata_admin' => 'sonata.media.admin.media',  '_sonata_name' => 'admin_sonata_media_media_show',)), array('_route' => 'admin_sonata_media_media_show'));
             }
 
@@ -606,7 +606,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_media_media_view
-            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?P<id>[^/]+)/view$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/media') && preg_match('#^/admin/sonata/media/media/(?<id>[^/]+)/view$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\MediaAdminController::viewAction',  '_sonata_admin' => 'sonata.media.admin.media',  '_sonata_name' => 'admin_sonata_media_media_view',)), array('_route' => 'admin_sonata_media_media_view'));
             }
 
@@ -626,17 +626,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_media_gallery_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/media/gallery') && preg_match('#^/admin/sonata/media/gallery/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/gallery') && preg_match('#^/admin/sonata/media/gallery/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\GalleryAdminController::editAction',  '_sonata_admin' => 'sonata.media.admin.gallery',  '_sonata_name' => 'admin_sonata_media_gallery_edit',)), array('_route' => 'admin_sonata_media_gallery_edit'));
             }
 
             // admin_sonata_media_gallery_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/media/gallery') && preg_match('#^/admin/sonata/media/gallery/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/gallery') && preg_match('#^/admin/sonata/media/gallery/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\GalleryAdminController::deleteAction',  '_sonata_admin' => 'sonata.media.admin.gallery',  '_sonata_name' => 'admin_sonata_media_gallery_delete',)), array('_route' => 'admin_sonata_media_gallery_delete'));
             }
 
             // admin_sonata_media_gallery_show
-            if (0 === strpos($pathinfo, '/admin/sonata/media/gallery') && preg_match('#^/admin/sonata/media/gallery/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/gallery') && preg_match('#^/admin/sonata/media/gallery/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\GalleryAdminController::showAction',  '_sonata_admin' => 'sonata.media.admin.gallery',  '_sonata_name' => 'admin_sonata_media_gallery_show',)), array('_route' => 'admin_sonata_media_gallery_show'));
             }
 
@@ -661,17 +661,17 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // admin_sonata_media_galleryhasmedia_edit
-            if (0 === strpos($pathinfo, '/admin/sonata/media/galleryhasmedia') && preg_match('#^/admin/sonata/media/galleryhasmedia/(?P<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/galleryhasmedia') && preg_match('#^/admin/sonata/media/galleryhasmedia/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.media.admin.gallery_has_media',  '_sonata_name' => 'admin_sonata_media_galleryhasmedia_edit',)), array('_route' => 'admin_sonata_media_galleryhasmedia_edit'));
             }
 
             // admin_sonata_media_galleryhasmedia_delete
-            if (0 === strpos($pathinfo, '/admin/sonata/media/galleryhasmedia') && preg_match('#^/admin/sonata/media/galleryhasmedia/(?P<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/galleryhasmedia') && preg_match('#^/admin/sonata/media/galleryhasmedia/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.media.admin.gallery_has_media',  '_sonata_name' => 'admin_sonata_media_galleryhasmedia_delete',)), array('_route' => 'admin_sonata_media_galleryhasmedia_delete'));
             }
 
             // admin_sonata_media_galleryhasmedia_show
-            if (0 === strpos($pathinfo, '/admin/sonata/media/galleryhasmedia') && preg_match('#^/admin/sonata/media/galleryhasmedia/(?P<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/admin/sonata/media/galleryhasmedia') && preg_match('#^/admin/sonata/media/galleryhasmedia/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.media.admin.gallery_has_media',  '_sonata_name' => 'admin_sonata_media_galleryhasmedia_show',)), array('_route' => 'admin_sonata_media_galleryhasmedia_show'));
             }
 
@@ -684,42 +684,42 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         if (0 === strpos($pathinfo, '/news')) {
             // sonata_news_add_comment
-            if (0 === strpos($pathinfo, '/news/add-comment') && preg_match('#^/news/add\\-comment/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/add-comment') && preg_match('#^/news/add\\-comment/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::addCommentAction',)), array('_route' => 'sonata_news_add_comment'));
             }
 
             // sonata_news_archive_monthly
-            if (0 === strpos($pathinfo, '/news/archive') && preg_match('#^/news/archive/(?P<year>\\d+)/(?P<month>\\d+)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/archive') && preg_match('#^/news/archive/(?<year>\\d+)/(?<month>\\d+)(?:\\.(?<_format>html|rss))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::archiveMonthlyAction',  '_format' => 'html',)), array('_route' => 'sonata_news_archive_monthly'));
             }
 
             // sonata_news_tag
-            if (0 === strpos($pathinfo, '/news/tag') && preg_match('#^/news/tag/(?P<tag>[^/\\.]+)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/tag') && preg_match('#^/news/tag/(?<tag>[^/\\.]+)(?:\\.(?<_format>html|rss))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::tagAction',  '_format' => 'html',)), array('_route' => 'sonata_news_tag'));
             }
 
             // sonata_news_category
-            if (0 === strpos($pathinfo, '/news/category') && preg_match('#^/news/category/(?P<category>[^/\\.]+)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/category') && preg_match('#^/news/category/(?<category>[^/\\.]+)(?:\\.(?<_format>html|rss))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::categoryAction',  '_format' => 'html',)), array('_route' => 'sonata_news_category'));
             }
 
             // sonata_news_archive_yearly
-            if (0 === strpos($pathinfo, '/news/archive') && preg_match('#^/news/archive/(?P<year>\\d+)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/archive') && preg_match('#^/news/archive/(?<year>\\d+)(?:\\.(?<_format>html|rss))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::archiveYearlyAction',  '_format' => 'html',)), array('_route' => 'sonata_news_archive_yearly'));
             }
 
             // sonata_news_archive
-            if (0 === strpos($pathinfo, '/news/archive') && preg_match('#^/news/archive(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/archive') && preg_match('#^/news/archive(?:\\.(?<_format>html|rss))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::archiveAction',  '_format' => 'html',)), array('_route' => 'sonata_news_archive'));
             }
 
             // sonata_news_comment_moderation
-            if (0 === strpos($pathinfo, '/news/comment/moderation') && preg_match('#^/news/comment/moderation/(?P<commentId>[^/]+)/(?P<hash>[^/]+)/(?P<status>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/news/comment/moderation') && preg_match('#^/news/comment/moderation/(?<commentId>[^/]+)/(?<hash>[^/]+)/(?<status>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::commentModerationAction',)), array('_route' => 'sonata_news_comment_moderation'));
             }
 
             // sonata_news_view
-            if (preg_match('#^/news/(?P<permalink>.+?)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/news/(?<permalink>.+?)(?:\\.(?<_format>html|rss))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\NewsBundle\\Controller\\PostController::viewAction',  '_format' => 'html',)), array('_route' => 'sonata_news_view'));
             }
 
@@ -745,7 +745,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // sonata_media_gallery_view
-            if (0 === strpos($pathinfo, '/media/gallery/view') && preg_match('#^/media/gallery/view/(?P<id>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/media/gallery/view') && preg_match('#^/media/gallery/view/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\GalleryController::viewAction',)), array('_route' => 'sonata_media_gallery_view'));
             }
 
@@ -753,12 +753,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         if (0 === strpos($pathinfo, '/media')) {
             // sonata_media_view
-            if (0 === strpos($pathinfo, '/media/view') && preg_match('#^/media/view/(?P<id>[^/]+)(?:/(?P<format>[^/]+))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/media/view') && preg_match('#^/media/view/(?<id>[^/]+)(?:/(?<format>[^/]+))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\MediaController::viewAction',  'format' => 'reference',)), array('_route' => 'sonata_media_view'));
             }
 
             // sonata_media_download
-            if (0 === strpos($pathinfo, '/media/download') && preg_match('#^/media/download/(?P<id>[^/]+)(?:/(?P<format>[^/]+))?$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/media/download') && preg_match('#^/media/download/(?<id>[^/]+)(?:/(?<format>[^/]+))?$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sonata\\MediaBundle\\Controller\\MediaController::downloadAction',  'format' => 'reference',)), array('_route' => 'sonata_media_download'));
             }
 

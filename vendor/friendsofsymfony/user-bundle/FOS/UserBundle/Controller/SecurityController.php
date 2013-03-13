@@ -17,8 +17,9 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class SecurityController extends ContainerAware
 {
-    public function loginAction(Request $request)
+    public function loginAction()
     {
+        $request = $this->container->get('request');
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
 

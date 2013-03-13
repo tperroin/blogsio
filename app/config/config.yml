@@ -16,7 +16,6 @@ framework:
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
-    trusted_proxies: ~
     session:         ~
 
 # Twig Configuration
@@ -66,6 +65,7 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~
+                    tperroinBlogSioBundle: ~
 
                 
 # Swiftmailer Configuration
@@ -213,22 +213,3 @@ sonata_formatter:
             extensions:
                 - sonata.formatter.twig.control_flow
                 - sonata.formatter.twig.gist
-trsteel_ckeditor:
-    class: Trsteel\CkeditorBundle\Form\Type\CkeditorType
-    transformers: ['strip_js', 'strip_css', 'strip_comments']
-    toolbar: ['document', 'clipboard', 'editing', '/', 'basicstyles', 'paragraph', 'links', '/', 'insert', 'styles', 'tools']
-    toolbar_groups:
-        document: ['Source','-','Save','-','Templates']
-        clipboard: ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo']
-        editing: ['Find','Replace','-','SelectAll']
-        basicstyles: ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat']
-        paragraph: ['NumberedList','BulletedList','-','Outdent','Indent','-','JustifyLeft', 'JustifyCenter','JustifyRight','JustifyBlock']
-        links: ['Link','Unlink','Anchor']
-        insert: ['Image','Flash','Table','HorizontalRule']
-        styles: ['Styles','Format']
-        tools: ['Maximize', 'ShowBlocks']
-    ui_color: '#000000'
-    startup_outline_blocks: true
-    width: 80%
-    height: 80%
-    language: 'fr-FR'

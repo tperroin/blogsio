@@ -25,28 +25,28 @@ class __TwigTemplate_f71e85b7b08c23cff54b7850a6c9f1a6 extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
+    // line 5
     public function block_title($context, array $blocks = array())
     {
         echo "Blog sio";
     }
 
-    // line 7
+    // line 9
     public function block_navbar($context, array $blocks = array())
     {
         echo " 
         <div class=\"twelve columns\">
             <ul class=\"nav-bar\">
                 <li class=\"active\"><a href=\"";
-        // line 10
+        // line 12
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("homepage"), "html", null, true);
         echo "\">Accueil</a></li>
                 <li><a href=\"";
-        // line 11
+        // line 13
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sonata_news_home"), "html", null, true);
         echo "\">Blog</a></li>
                 <li><a href=\"";
-        // line 12
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("tperroin_projets"), "html", null, true);
         echo "\">Projets</a></li>
                 <li><a href=\"#\">Contact Us</a></li>
@@ -67,6 +67,6 @@ class __TwigTemplate_f71e85b7b08c23cff54b7850a6c9f1a6 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  50 => 12,  46 => 11,  42 => 10,  35 => 7,  29 => 3,  67 => 37,  37 => 10,  31 => 6,  28 => 5,);
+        return array (  50 => 14,  46 => 13,  42 => 12,  35 => 9,  29 => 5,  67 => 37,  37 => 10,  31 => 6,  28 => 5,);
     }
 }

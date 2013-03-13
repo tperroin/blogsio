@@ -680,6 +680,41 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.media.admin.gallery_has_media',  '_sonata_name' => 'admin_sonata_media_galleryhasmedia_export',  '_route' => 'admin_sonata_media_galleryhasmedia_export',);
             }
 
+            // admin_tperroin_blogsio_projet_list
+            if ($pathinfo === '/admin/tperroin/blogsio/projet/list') {
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::listAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_list',  '_route' => 'admin_tperroin_blogsio_projet_list',);
+            }
+
+            // admin_tperroin_blogsio_projet_create
+            if ($pathinfo === '/admin/tperroin/blogsio/projet/create') {
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::createAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_create',  '_route' => 'admin_tperroin_blogsio_projet_create',);
+            }
+
+            // admin_tperroin_blogsio_projet_batch
+            if ($pathinfo === '/admin/tperroin/blogsio/projet/batch') {
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::batchAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_batch',  '_route' => 'admin_tperroin_blogsio_projet_batch',);
+            }
+
+            // admin_tperroin_blogsio_projet_edit
+            if (0 === strpos($pathinfo, '/admin/tperroin/blogsio/projet') && preg_match('#^/admin/tperroin/blogsio/projet/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::editAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_edit',)), array('_route' => 'admin_tperroin_blogsio_projet_edit'));
+            }
+
+            // admin_tperroin_blogsio_projet_delete
+            if (0 === strpos($pathinfo, '/admin/tperroin/blogsio/projet') && preg_match('#^/admin/tperroin/blogsio/projet/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::deleteAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_delete',)), array('_route' => 'admin_tperroin_blogsio_projet_delete'));
+            }
+
+            // admin_tperroin_blogsio_projet_show
+            if (0 === strpos($pathinfo, '/admin/tperroin/blogsio/projet') && preg_match('#^/admin/tperroin/blogsio/projet/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::showAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_show',)), array('_route' => 'admin_tperroin_blogsio_projet_show'));
+            }
+
+            // admin_tperroin_blogsio_projet_export
+            if ($pathinfo === '/admin/tperroin/blogsio/projet/export') {
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetAdminController::exportAction',  '_sonata_admin' => 'tperroin_blog.sio.admin.projet',  '_sonata_name' => 'admin_tperroin_blogsio_projet_export',  '_route' => 'admin_tperroin_blogsio_projet_export',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/news')) {

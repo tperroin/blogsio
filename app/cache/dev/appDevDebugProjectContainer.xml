@@ -39,6 +39,7 @@
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="tperroinBlogSioBundle">tperroin\BlogSioBundle\tperroinBlogSioBundle</parameter>
+      <parameter key="TrsteelCkeditorBundle">Trsteel\CkeditorBundle\TrsteelCkeditorBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -310,6 +311,7 @@
       <parameter>form_div_layout.html.twig</parameter>
       <parameter>SonataUserBundle:Form:form_admin_fields.html.twig</parameter>
       <parameter>IvoryCKEditorBundle:Form:ckeditor_widget.html.twig</parameter>
+      <parameter>TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig</parameter>
     </parameter>
     <parameter key="twig.options" type="collection">
       <parameter key="debug">true</parameter>
@@ -416,6 +418,7 @@
       <parameter>KnpMenuBundle</parameter>
       <parameter>KnpPaginatorBundle</parameter>
       <parameter>tperroinBlogSioBundle</parameter>
+      <parameter>TrsteelCkeditorBundle</parameter>
       <parameter>WebProfilerBundle</parameter>
       <parameter>SensioDistributionBundle</parameter>
       <parameter>SensioGeneratorBundle</parameter>
@@ -535,8 +538,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/var/www/sites/blog/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_51406094862fe.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_5140c2fb587e3.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager5140c2fb587e3_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -822,6 +825,143 @@
     <parameter key="knp_paginator.template.filtration">KnpPaginatorBundle:Pagination:filtration.html.twig</parameter>
     <parameter key="knp_paginator.template.sortable">KnpPaginatorBundle:Pagination:sortable_link.html.twig</parameter>
     <parameter key="knp_paginator.page_range">5</parameter>
+    <parameter key="trsteel_ckeditor.form.type.class">Trsteel\CkeditorBundle\Form\Type\CkeditorType</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.transformers" type="collection">
+      <parameter>strip_js</parameter>
+      <parameter>strip_css</parameter>
+      <parameter>strip_comments</parameter>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.toolbar" type="collection">
+      <parameter>document</parameter>
+      <parameter>clipboard</parameter>
+      <parameter>editing</parameter>
+      <parameter>/</parameter>
+      <parameter>basicstyles</parameter>
+      <parameter>paragraph</parameter>
+      <parameter>links</parameter>
+      <parameter>/</parameter>
+      <parameter>insert</parameter>
+      <parameter>styles</parameter>
+      <parameter>tools</parameter>
+      <parameter>colors</parameter>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.toolbar_groups" type="collection">
+      <parameter key="document" type="collection">
+        <parameter>Source</parameter>
+        <parameter>-</parameter>
+        <parameter>Save</parameter>
+        <parameter>-</parameter>
+        <parameter>Templates</parameter>
+      </parameter>
+      <parameter key="clipboard" type="collection">
+        <parameter>Cut</parameter>
+        <parameter>Copy</parameter>
+        <parameter>Paste</parameter>
+        <parameter>PasteText</parameter>
+        <parameter>PasteFromWord</parameter>
+        <parameter>-</parameter>
+        <parameter>Undo</parameter>
+        <parameter>Redo</parameter>
+      </parameter>
+      <parameter key="editing" type="collection">
+        <parameter>Find</parameter>
+        <parameter>Replace</parameter>
+        <parameter>-</parameter>
+        <parameter>SelectAll</parameter>
+      </parameter>
+      <parameter key="basicstyles" type="collection">
+        <parameter>Bold</parameter>
+        <parameter>Italic</parameter>
+        <parameter>Underline</parameter>
+        <parameter>Strike</parameter>
+        <parameter>Subscript</parameter>
+        <parameter>Superscript</parameter>
+        <parameter>-</parameter>
+        <parameter>RemoveFormat</parameter>
+      </parameter>
+      <parameter key="paragraph" type="collection">
+        <parameter>NumberedList</parameter>
+        <parameter>BulletedList</parameter>
+        <parameter>-</parameter>
+        <parameter>Outdent</parameter>
+        <parameter>Indent</parameter>
+        <parameter>-</parameter>
+        <parameter>JustifyLeft</parameter>
+        <parameter>JustifyCenter</parameter>
+        <parameter>JustifyRight</parameter>
+        <parameter>JustifyBlock</parameter>
+      </parameter>
+      <parameter key="links" type="collection">
+        <parameter>Link</parameter>
+        <parameter>Unlink</parameter>
+        <parameter>Anchor</parameter>
+      </parameter>
+      <parameter key="insert" type="collection">
+        <parameter>Image</parameter>
+        <parameter>Flash</parameter>
+        <parameter>Table</parameter>
+        <parameter>HorizontalRule</parameter>
+      </parameter>
+      <parameter key="styles" type="collection">
+        <parameter>Styles</parameter>
+        <parameter>Format</parameter>
+      </parameter>
+      <parameter key="tools" type="collection">
+        <parameter>Maximize</parameter>
+        <parameter>ShowBlocks</parameter>
+      </parameter>
+      <parameter key="colors" type="collection">
+        <parameter>TextColor</parameter>
+        <parameter>BGColor</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.startup_outline_blocks">true</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.ui_color">#000000</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.width">800</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.height">300</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.force_paste_as_plaintext">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.language">en-au</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.filebrowser_browse_url" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="route">null</parameter>
+      <parameter key="route_parameters" type="collection"/>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.filebrowser_upload_url" type="collection">
+      <parameter key="url">relative-url.php?type=file</parameter>
+      <parameter key="route">null</parameter>
+      <parameter key="route_parameters" type="collection"/>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.filebrowser_image_browse_url" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="route">null</parameter>
+      <parameter key="route_parameters" type="collection"/>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.filebrowser_image_upload_url" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="route">null</parameter>
+      <parameter key="route_parameters" type="collection"/>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.filebrowser_flash_browse_url" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="route">null</parameter>
+      <parameter key="route_parameters" type="collection"/>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.filebrowser_flash_upload_url" type="collection">
+      <parameter key="url">null</parameter>
+      <parameter key="route">null</parameter>
+      <parameter key="route_parameters" type="collection"/>
+    </parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.skin">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.format_tags" type="collection"/>
+    <parameter key="trsteel_ckeditor.ckeditor.base_path">bundles/trsteelckeditor/</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.base_href">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.body_class">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.contents_css">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.basic_entities">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.entities">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.entities_latin">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.startup_mode">null</parameter>
+    <parameter key="trsteel_ckeditor.ckeditor.external_plugins" type="collection"/>
     <parameter key="web_profiler.debug_toolbar.class">Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -2517,7 +2657,7 @@
               <argument key="sonata_block_service_choice">sonata.block.form.type.block</argument>
               <argument key="sonata_security_roles">sonata.user.form.type.security_roles</argument>
               <argument key="sonata_user_profile">sonata.user.profile.form.type</argument>
-              <argument key="ckeditor">form.type.ckeditor</argument>
+              <argument key="ckeditor">trsteel_ckeditor.form.type</argument>
               <argument key="sonata_post_comment">sonata.news.form.type.comment</argument>
               <argument key="sonata_media_type">sonata.media.form.type.media</argument>
               <argument key="sonata_formatter_type_selector">sonata.formatter.form.type.selector</argument>
@@ -3044,7 +3184,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5140609200f33</argument>
+            <argument>5140c2fb1ed34</argument>
           </service>
         </argument>
         <argument type="service">
@@ -3058,7 +3198,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5140609200f33</argument>
+            <argument>5140c2fb1ed34</argument>
           </service>
         </argument>
       </argument>
@@ -3401,7 +3541,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5140609200f33</argument>
+            <argument>5140c2fb1ed34</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -3512,7 +3652,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5140609200f33</argument>
+            <argument>5140c2fb1ed34</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -3623,6 +3763,7 @@
                       <argument>form_div_layout.html.twig</argument>
                       <argument>SonataUserBundle:Form:form_admin_fields.html.twig</argument>
                       <argument>IvoryCKEditorBundle:Form:ckeditor_widget.html.twig</argument>
+                      <argument>TrsteelCkeditorBundle:Form:ckeditor_widget.html.twig</argument>
                     </argument>
                   </service>
                 </argument>
@@ -3680,6 +3821,7 @@
               <argument>KnpMenuBundle</argument>
               <argument>KnpPaginatorBundle</argument>
               <argument>tperroinBlogSioBundle</argument>
+              <argument>TrsteelCkeditorBundle</argument>
               <argument>WebProfilerBundle</argument>
               <argument>SensioDistributionBundle</argument>
               <argument>SensioGeneratorBundle</argument>
@@ -4762,6 +4904,33 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
+                  <argument>TrsteelCkeditorBundle</argument>
+                  <argument>/var/www/sites/blog/app/Resources/TrsteelCkeditorBundle/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>TrsteelCkeditorBundle</argument>
+                  <argument>/var/www/sites/blog/vendor/Trsteel/ckeditor-bundle/Trsteel/CkeditorBundle/Resources/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
                   <argument>WebProfilerBundle</argument>
                   <argument>/var/www/sites/blog/app/Resources/WebProfilerBundle/views</argument>
                   <argument>/\.[^.]+\.twig$/</argument>
@@ -5001,8 +5170,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51406094862fe_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_51406094862fe.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager5140c2fb587e3_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/var/www/sites/blog/app/cache/dev/jms_diextra/doctrine/EntityManager_5140c2fb587e3.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -5453,8 +5622,8 @@
     </service>
     <service id="sonata.admin.pool" class="Sonata\AdminBundle\Admin\Pool">
       <argument type="service" id="service_container"/>
-      <argument>Admin Panel</argument>
-      <argument>/bundles/sonataadmin/logo_title.png</argument>
+      <argument>Back-End</argument>
+      <argument>bundles/sonataadmin/logo_title.png</argument>
       <call method="setTemplates">
         <argument type="collection">
           <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
@@ -5484,6 +5653,7 @@
           <argument>sonata.media.admin.media</argument>
           <argument>sonata.media.admin.gallery</argument>
           <argument>sonata.media.admin.gallery_has_media</argument>
+          <argument>tperroin_blog.sio.admin.projet</argument>
         </argument>
       </call>
       <call method="setAdminGroups">
@@ -5514,6 +5684,13 @@
               <argument>sonata.media.admin.gallery</argument>
             </argument>
           </argument>
+          <argument key="Projet" type="collection">
+            <argument key="label">Projet</argument>
+            <argument key="label_catalogue">SonataAdminBundle</argument>
+            <argument key="items" type="collection">
+              <argument>tperroin_blog.sio.admin.projet</argument>
+            </argument>
+          </argument>
         </argument>
       </call>
       <call method="setAdminClasses">
@@ -5527,6 +5704,7 @@
           <argument key="Application\Sonata\MediaBundle\Entity\Media">sonata.media.admin.media</argument>
           <argument key="Application\Sonata\MediaBundle\Entity\Gallery">sonata.media.admin.gallery</argument>
           <argument key="Application\Sonata\MediaBundle\Entity\GalleryHasMedia">sonata.media.admin.gallery_has_media</argument>
+          <argument key="tperroin\BlogSioBundle\Entity\Projet">tperroin_blog.sio.admin.projet</argument>
         </argument>
       </call>
     </service>
@@ -5543,6 +5721,7 @@
         <argument>sonata.media.admin.media</argument>
         <argument>sonata.media.admin.gallery</argument>
         <argument>sonata.media.admin.gallery_has_media</argument>
+        <argument>tperroin_blog.sio.admin.projet</argument>
       </argument>
       <argument type="service" id="service_container"/>
     </service>
@@ -8000,6 +8179,117 @@
       <tag name="twig.extension"/>
       <argument type="service" id="templating.helper.router"/>
       <argument type="service" id="translator.default"/>
+    </service>
+    <service id="tperroin_blog.sio.admin.projet" class="tperroin\BlogSioBundle\Admin\ProjetAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="Projet" label="Projets"/>
+      <argument>tperroin_blog.sio.admin.projet</argument>
+      <argument>tperroin\BlogSioBundle\Entity\Projet</argument>
+      <argument>tperroinBlogSioBundle:ProjetAdmin</argument>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Projets</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision">SonataAdminBundle:CRUD:history_revision.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="trsteel_ckeditor.form.type" class="Trsteel\CkeditorBundle\Form\Type\CkeditorType">
+      <tag name="form.type" alias="ckeditor"/>
+      <argument type="service" id="service_container"/>
+      <call method="addTransformer">
+        <argument type="service" id="trsteel_ckeditor.transformer.strip_js"/>
+        <argument>strip_js</argument>
+      </call>
+      <call method="addTransformer">
+        <argument type="service" id="trsteel_ckeditor.transformer.strip_css"/>
+        <argument>strip_css</argument>
+      </call>
+      <call method="addTransformer">
+        <argument type="service" id="trsteel_ckeditor.transformer.strip_comments"/>
+        <argument>strip_comments</argument>
+      </call>
+    </service>
+    <service id="trsteel_ckeditor.transformer.strip_js" class="Trsteel\CkeditorBundle\Form\Transformer\StripJS">
+      <tag name="trsteel_ckeditor.transformer" alias="strip_js"/>
+    </service>
+    <service id="trsteel_ckeditor.transformer.strip_css" class="Trsteel\CkeditorBundle\Form\Transformer\StripCSS">
+      <tag name="trsteel_ckeditor.transformer" alias="strip_css"/>
+    </service>
+    <service id="trsteel_ckeditor.transformer.strip_comments" class="Trsteel\CkeditorBundle\Form\Transformer\StripComments">
+      <tag name="trsteel_ckeditor.transformer" alias="strip_comments"/>
     </service>
     <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener">
       <tag name="kernel.event_subscriber"/>

@@ -5,3 +5,8 @@ services:
 #    tperroin_blog_sio.example:
 #        class: %tperroin_blog_sio.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    tperroin_blog.sio.admin.projet:
+        class: tperroin\BlogSioBundle\Admin\ProjetAdmin
+        tags:
+          - {name: sonata.admin, manager_type: orm, group: Projet, label: Projets }
+        arguments : [null, tperroin\BlogSioBundle\Entity\Projet, tperroinBlogSioBundle:ProjetAdmin]

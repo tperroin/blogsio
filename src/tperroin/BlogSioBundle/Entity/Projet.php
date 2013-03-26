@@ -52,13 +52,6 @@ class Projet
     /**
      * @var string
      *
-     * @ORM\Column(name="comments", type="string", length=255)
-     */
-    private $comments;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
@@ -173,29 +166,7 @@ class Projet
         return $this->teaser;
     }
 
-    /**
-     * Set comments
-     *
-     * @param string $comments
-     * @return Projet
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
     
-        return $this;
-    }
-
-    /**
-     * Get comments
-     *
-     * @return string 
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
     /**
      * Set titre
      *
@@ -240,5 +211,10 @@ class Projet
     public function getImage()
     {
         return $this->image;
+    }
+    
+    public function __toString()
+    {
+        return $this->id.' '.$this->titre;
     }
 }

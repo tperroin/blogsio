@@ -1,0 +1,50 @@
+{% extends 'SonataNewsBundle:Post:archive.html.twig' %}
+{% block title %}Projets {{ parent() }}{% endblock %}
+ 
+    {% block navbar %} 
+        <div class="twelve columns">
+            <ul class="nav-bar">
+                <li><a href="{{ path('homepage')}}">Accueil</a></li>
+                <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
+                <li class="active"><a href="{{ path('tperroin_projets')}}">Projets</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block image_accueil %}  {% endblock %}
+
+    {% block corps %}
+
+        {% for entity in entities %}
+
+        {% if loop.index is divisibleby(2) %}
+            <div class="row">
+                <a href="{{ path('tperroin_show', { 'id': entity.id }) }}"><div class="large-6 columns">
+                    <div class="panel">
+                        <h5>{{ entity.titre }}</h5>
+                        <p>{{ entity.teaser }}</p>
+                    </div>
+                </div></a>
+            </div>
+        {% else %}
+            <div class="row">
+                <a href="{{ path('tperroin_show', { 'id': entity.id }) }}">
+                    <div class="large-6 columns">
+                        <div class="panel callout radius">
+                            <h5>{{ entity.titre }}</h5>
+                            <p>{{ entity.teaser }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+         
+         {% endfor %}
+          
+          
+        
+
+
+
+    {% endblock %}

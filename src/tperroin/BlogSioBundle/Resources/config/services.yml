@@ -8,5 +8,5 @@ services:
     tperroin_blog.sio.admin.projet:
         class: tperroin\BlogSioBundle\Admin\ProjetAdmin
         tags:
-          - {name: sonata.admin, manager_type: orm, group: Projet, label: Projets }
+          - {name: sonata.admin, manager_type: orm, group: Projet Admin, label: Projets }
         arguments : [null, tperroin\BlogSioBundle\Entity\Projet, tperroinBlogSioBundle:ProjetAdmin]

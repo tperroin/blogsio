@@ -25,11 +25,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         $allow = array();
         $pathinfo = rawurldecode($pathinfo);
 
-        // _assetic_1b37284
-        if ($pathinfo === '/js/1b37284.js') {
-            return array (  '_controller' => 'assetic.controller:render',  'name' => '1b37284',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_1b37284',);
-        }
-
         // _wdt
         if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',)), array('_route' => '_wdt'));
@@ -130,6 +125,66 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // tperroin_projets
         if ($pathinfo === '/projets') {
             return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\DefaultController::projetsAction',  '_route' => 'tperroin_projets',);
+        }
+
+        if (0 === strpos($pathinfo, '/projet')) {
+            // projet
+            if (rtrim($pathinfo, '/') === '/projet') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'projet');
+                }
+
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::indexAction',  '_route' => 'projet',);
+            }
+
+            // projet_show
+            if (preg_match('#^/projet/(?<id>[^/]+)/show$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::showAction',)), array('_route' => 'projet_show'));
+            }
+
+            // projet_new
+            if ($pathinfo === '/projet/new') {
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::newAction',  '_route' => 'projet_new',);
+            }
+
+            // projet_create
+            if ($pathinfo === '/projet/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_projet_create;
+                }
+
+                return array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::createAction',  '_route' => 'projet_create',);
+            }
+            not_projet_create:
+
+            // projet_edit
+            if (preg_match('#^/projet/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::editAction',)), array('_route' => 'projet_edit'));
+            }
+
+            // projet_update
+            if (preg_match('#^/projet/(?<id>[^/]+)/update$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_projet_update;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::updateAction',)), array('_route' => 'projet_update'));
+            }
+            not_projet_update:
+
+            // projet_delete
+            if (preg_match('#^/projet/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_projet_delete;
+                }
+
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'tperroin\\BlogSioBundle\\Controller\\ProjetController::deleteAction',)), array('_route' => 'projet_delete'));
+            }
+            not_projet_delete:
+
         }
 
         // fos_user_security_login

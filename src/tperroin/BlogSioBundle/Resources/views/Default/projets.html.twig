@@ -7,7 +7,6 @@
                 <li><a href="{{ path('homepage')}}">Accueil</a></li>
                 <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
                 <li class="active"><a href="{{ path('tperroin_projets')}}">Projets</a></li>
-                <li><a href="#">Contact Us</a></li>
             </ul>
         </div>
     {% endblock %}
@@ -16,36 +15,34 @@
 
     {% block corps %}
 
+        {% for entity in entities %}
+
+        {% if loop.index is divisibleby(2) %}
+            <div class="row">
+                <a href="{{ path('tperroin_show', { 'id': entity.id }) }}"><div class="large-6 columns">
+                    <div class="panel">
+                        <h5>{{ entity.titre }}</h5>
+                        <p>{{ entity.teaser }}</p>
+                    </div>
+                </div></a>
+            </div>
+        {% else %}
+            <div class="row">
+                <a href="{{ path('tperroin_show', { 'id': entity.id }) }}">
+                    <div class="large-6 columns">
+                        <div class="panel callout radius">
+                            <h5>{{ entity.titre }}</h5>
+                            <p>{{ entity.teaser }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+         
+         {% endfor %}
+          
+          
         
-         <div class="row">
-          <div class="large-6 columns">
-            <div class="panel">
-                
-                <h5>Projet GestStages</h5>
-              <p>Application WEB en PHP de gestion de stages.</p>
-            </div>
-          </div>
-          <div class="large-6 columns">
-            <div class="panel callout radius">
-              <h5>Projet Moskito</h5>
-              <p>Application WEB en PHP sous Drupal 6 pour l'entreprise MANITOU BF.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">
-            <div class="panel callout radius">
-              <h5>Projet AFPA</h5>
-              <p>Application non terminée</p>
-            </div>
-          </div>
-          <div class="large-6 columns">
-            <div class="panel">
-              <h5>Projet GestComptesInternet</h5>
-              <p>Application Java de gestion de comptes bancaires sur Internet pour l'entreprise ETS BOUCHEREAU.</p>
-            </div>
-          </div>
-        </div>
 
 
 

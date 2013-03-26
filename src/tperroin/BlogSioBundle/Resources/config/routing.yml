@@ -9,3 +9,12 @@ news:
 tperroin_projets:
     pattern: /projets
     defaults: { _controller: tperroinBlogSioBundle:Default:projets }
+
+tperroinBlogSioBundle_projet:
+        resource: "@tperroinBlogSioBundle/Resources/config/routing/projet.yml"
+        prefix:   /projet
+
+    
+
+    
+

@@ -8,11 +8,12 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/stylesheets/foundation.css') }}" type="text/css" />
     {% endblock %}
-      
-    {% javascripts %}
-        <script type="text/javascript" src="{{ asset('css/javascript/jquery.foundation.tooltips') }}"></script>
-    {% endjavascripts %}
-      
+    
+    {% block javascripts %}{% endblock %}
+        
+    {% block navprojets %}{% endblock %}
+    
+  </head>
     <!-- Header and Nav -->
   
   <div class="row">

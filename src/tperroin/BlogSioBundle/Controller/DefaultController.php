@@ -13,7 +13,13 @@ class DefaultController extends Controller
     
     public function projetsAction()
     {
-        return $this->render('tperroinBlogSioBundle:Default:projets.html.twig');
+        
+        $em = $this->getDoctrine()->getEntityManager();
+ 
+        $entities = $em->getRepository('tperroinBlogSioBundle:Projet')->findAll();
+    
+        return $this->render('tperroinBlogSioBundle:Projet:index.html.twig', array(
+        'entities' => $entities));
     }
     
    

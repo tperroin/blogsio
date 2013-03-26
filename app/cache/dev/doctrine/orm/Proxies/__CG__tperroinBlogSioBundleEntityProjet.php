@@ -99,18 +99,6 @@ class Projet extends \tperroin\BlogSioBundle\Entity\Projet implements \Doctrine\
         return parent::getTeaser();
     }
 
-    public function setComments($comments)
-    {
-        $this->__load();
-        return parent::setComments($comments);
-    }
-
-    public function getComments()
-    {
-        $this->__load();
-        return parent::getComments();
-    }
-
     public function setTitre($titre)
     {
         $this->__load();
@@ -135,10 +123,16 @@ class Projet extends \tperroin\BlogSioBundle\Entity\Projet implements \Doctrine\
         return parent::getImage();
     }
 
+    public function __toString()
+    {
+        $this->__load();
+        return parent::__toString();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'date', 'auteur', 'contenu', 'teaser', 'comments', 'titre', 'image');
+        return array('__isInitialized__', 'id', 'date', 'auteur', 'contenu', 'teaser', 'titre', 'image');
     }
 
     public function __clone()

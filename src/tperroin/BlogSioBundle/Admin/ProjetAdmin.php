@@ -24,9 +24,11 @@ class ProjetAdmin extends Admin
             ->add('date')
             ->add('auteur')
             ->add('titre')
-            ->add('contenu', 'textarea', array('attr' => array('class' => 'ckeditor')))
+            ->add('contenu', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
             ->add('image', 'file', array('label' => 'Image', 'required' => false))
+                
             ->add('teaser')
+                ->end()
         ;
     }
  
@@ -39,20 +41,28 @@ class ProjetAdmin extends Admin
             ->add('contenu')
             ->add('image')
             ->add('teaser')
-            ->add('comments')
         ;
     }
  
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('date')
+            ->addIdentifier('id')
+            ->add('date')
             ->add('auteur')
             ->add('titre')
             ->add('contenu')
             ->add('image')
             ->add('teaser')
-            ->add('comments')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'view' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
         ;
     }
+    
+
 }

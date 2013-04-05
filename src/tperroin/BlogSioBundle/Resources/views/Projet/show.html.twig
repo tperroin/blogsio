@@ -2,30 +2,52 @@
 
 {% block image_accueil %}  {% endblock %}
 
-{% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/tperroinblogsio/js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tperroinblogsio/js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tperroinblogsio/js/foundation.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tperroinblogsio/js/modernizr.foundation.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tperroinblogsio/js/jquery.foundation.accordion.js') }}"></script>
-{% endblock %}
 
-{% block navbar %} 
-        <div class="twelve columns">
-            <ul class="nav-bar">
-                <li><a href="{{ path('homepage')}}">Accueil</a></li>
-                <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
-                <li class="active"><a href="{{ path('tperroin_projets')}}">Projets</a></li>
-            </ul>
-        </div>
-{% endblock %}
         
 {% block navprojets %}
+    
+   <!--     <div class="twelve columns ">
+            <div class="row">
+                <dl class="sub-nav">
+                    <dd class="active"><a href="#presentation">Présentation</a></dd>
+                    <dd><a href="#ressources">Ressources</a></dd>
+                    <dd><a href="#dossierTechnique">Dossier technique</a></dd>
+                    <dd><a href="#configSources">Configuration et code sources</a></dd>
+                    <dd><a href="#activitesCompetences">Activités et compétences</a></dd>
+                    <dd><a href="#bilan">Bilan</a></dd>
 
+                </dl>
+            </div>
+        </div>
+  -->
+<div class="row">
+        <dl id="magellanTopNav" class="sub-nav" data-magellan-expedition="fixed" >
+            <dd class="active" data-magellan-arrival="presentation">
+                <a href="#presentation">Présentation</a>
+            </dd>
+            <dd data-magellan-arrival="ressources" >
+                <a href="#ressources">Ressources</a>
+            </dd>
+            <dd data-magellan-arrival="dossierTechnique">
+                <a href="#dossierTechnique">Dossier technique</a>
+            </dd>
+            <dd data-magellan-arrival="configSources">
+                <a href="#configSources">Configuration et code source</a>
+            </dd>
+            <dd data-magellan-arrival="activitesCompetences">
+                <a href="#activitesCompetences">Activités et compétences</a>
+            </dd>
+            <dd data-magellan-arrival="bilan">
+                <a href="#bilan">Bilan</a>
+            </dd>
+        </dl>
+</div>
+  
 {% endblock %}
 
 {% block corps %}
-<div class="twelve columns">
+
+<div class="large-12 columns">
     <div class="row">
         <div class="right">
         Créé le : {{ entity.date|date('d/m/Y') }} par {{ entity.auteur }}
@@ -35,9 +57,37 @@
     <div class="row">
         <h1>{{ entity.titre }}</h1>
     </div>
-    <div class="row">
-        <p>{{ entity.contenu | raw}}</p>
+        
+    <div id="presentation" class="row blocBlanc">
+        <h3 data-magellan-destination="presentation" >Présentation :</h3>
+        <p>{{ entity.presentation | raw}}</p>
     </div>
+        
+    <div id="ressources" class="row blocBlanc">
+        <h3 data-magellan-destination="ressources" >Ressources :</h3>
+        <p>{{ entity.ressources | raw}}</p>
+    </div>
+        
+    <div id="dossierTechnique" class="row blocBlanc">
+        <h3 data-magellan-destination="dossierTechnique" >Dossier technique :</h3>
+        <p>{{ entity.dossierTechnique | raw}}</p>
+    </div>
+
+    <div id="configSources" class="row blocBlanc">
+        <h3 data-magellan-destination="configSources" >Configuration et code sources :</h3>
+        <p>{{ entity.configSources | raw}}</p>
+    </div>
+        
+    <div id="activitesCompetences" class="row blocBlanc">
+        <h3 data-magellan-destination="activitesCompetences" >Activités et compétences :</h3>
+        <p>{{ entity.activitesCompetences | raw}}</p>
+    </div> 
+        
+    <div id="bilan" class="row blocBlanc">
+        <h3 data-magellan-destination="bilan" >Bilan :</h3>
+        <p>{{ entity.bilan | raw}}</p>
+    </div> 
+        
 </div>
 
 {% endblock %}

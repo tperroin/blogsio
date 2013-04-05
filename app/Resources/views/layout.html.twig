@@ -1,79 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- 
-    <title>{% block title %}Blog sio{% endblock %}</title>
- 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/stylesheets/foundation.css') }}" type="text/css" />
-    {% endblock %}
-    
-    {% block javascripts %}{% endblock %}
+    <head>
+
+        <meta charset="utf-8" />
+
+        <!-- Set the viewport width to device width for mobile -->
+        <meta name="viewport" content="width=device-width" />
+
+        <title>{% block title %}Blog sio{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/stylesheets/foundation.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/stylesheets/normalize.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/stylesheets/app.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/stylesheets/foundation.min.css') }}" type="text/css" />
+        {% endblock %}
+            
+        {% block javascripts %}
+            <script src="{{ asset('css/javascripts/vendor/jquery.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('css/javascripts/vendor/zepto.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('css/javascripts/foundation/foundation.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('css/javascripts/foundation/foundation.magellan.js') }}" type="text/javascript"></script>
+
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        <!-- Header and Nav -->
         
-    {% block navprojets %}{% endblock %}
+        
+        
+            
+        {% block logo %} 
+        <div class="row head">
+            <div class="large-3 columns">
+                <a href="{{ path('homepage')}}"><img src="{{ asset('css/images/accueil/logo.png') }}" alt="Symfony!" /></a>
+            </div>
+           
+        {% endblock %}
+
+
+
+        {% block navbar %} 
+            <div class="large-9 columns">
+                <ul class="button-group right">
+                    <li><a href="{{ path('homepage')}}" class="button">Accueil</a></li>
+                    <li><a href="{{ path('sonata_news_home') }}" class="button">Blog</a></li>
+                    <li><a href="{{ path('tperroin_projets')}}" class="button">Projets</a></li>
+                    <li><a href="{{ path('sonata_admin_dashboard')}}" class="button">Administration</a></li>
+                </ul>
+            </div>
+        </div>
+        {% endblock %}
+        <!-- End Header and Nav -->
+
+        <!-- First Band (Image) -->
+        {% block image_accueil %}
+            <div class="row">
+                <div class="large-12 columns">
+                    <img src="{{ asset('css/images/accueil/image_accueil.jpg') }}" alt=""/>
+                    <br></br>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block navprojets %}{% endblock %}
+        
+        {% block corps %}{% endblock %}
+
+        <script>
+  document.write('<script src="http://foundation.zurb.com/docs/assets/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js"><\/script>');
+</script>
+<script>
+      $(document).foundation();
+      // For Kitchen Sink Page
+      $('#start-jr').on('click', function() {
+        $(document).foundation('joyride','start');
+      });
+    </script>
+    </body>
+
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr />
+            <div class="row">
+                <div class="large-6 columns">
+                    <p>&copy; Copyright Perroin Thibault</p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="link-list right">
+                        <li><a href="http://tpdoc.tpdev.fr/">tpdoc</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </footer>
+
     
-  </head>
-    <!-- Header and Nav -->
-  
-  <div class="row">
-     
-    {% block logo %} 
-        <div class="three columns">
-            <a href="{{ path('homepage')}}"><img src="{{ asset('css/images/accueil/logo.png') }}" alt="Symfony!" /></a>
-        </div>
-    {% endblock %}
-      
-    <div class="eight columns">
-        <ul class="link-list right">
-            <li><a href="{{ path('sonata_admin_dashboard')}}">Administration</a></li>
-        </ul>
-    </div>
-    
-    {% block navbar %} 
-        <div class="twelve columns">
-            <ul class="nav-bar">
-                <li class="active"><a href="{{ path('homepage')}}">Accueil</a></li>
-                <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
-                <li><a href="{{ path('tperroin_projets')}}">Projets</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </div>
-    {% endblock %}
-      
-  </div>
-  <!-- End Header and Nav -->
-  
-  
-  <!-- First Band (Image) -->
-    
-  {% block image_accueil %}
-    <div class="row">
-        <div class="twelve columns">
-          <img src="{{ asset('css/images/accueil/image_accueil.jpg') }}" alt=""/>
-          <hr />
-        </div>      
-    </div>
-  {% endblock %}
-  
-  
-  {% block corps %}{% endblock %}
-  
-  
-  <!-- Footer -->
-  
-  <footer class="row">
-    <div class="twelve columns">
-      <hr />
-      <div class="row">
-        <div class="six columns">
-          <p>&copy; Copyright Perroin Thibault</p>
-        </div>
-        <div class="six columns">
-          <ul class="link-list right">
-            <li><a href="http://tpdoc.tpdev.fr/">tpdoc</a></li>
-          </ul>
-        </div>
-      </div>
-    </div> 
-  </footer>
+</html>

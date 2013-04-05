@@ -24,10 +24,13 @@ class ProjetAdmin extends Admin
             ->add('date')
             ->add('auteur')
             ->add('titre')
-            ->add('contenu', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
-            ->add('image', 'file', array('label' => 'Image', 'required' => false))
-                
             ->add('teaser')
+            ->add('presentation', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
+            ->add('ressources', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
+            ->add('dossierTechnique', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
+            ->add('configSources', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
+            ->add('activitesCompetences', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
+            ->add('bilan', 'textarea', array('required' => false,'attr' => array('class' => 'ckeditor')))
                 ->end()
         ;
     }
@@ -38,9 +41,14 @@ class ProjetAdmin extends Admin
             ->add('date')
             ->add('auteur')
             ->add('titre')
-            ->add('contenu')
-            ->add('image')
             ->add('teaser')
+            ->add('presentation')
+            ->add('ressources')
+            ->add('dossierTechnique')
+            ->add('configSources')
+            ->add('activitesCompetences')
+            ->add('bilan')
+             
         ;
     }
  
@@ -51,9 +59,13 @@ class ProjetAdmin extends Admin
             ->add('date')
             ->add('auteur')
             ->add('titre')
-            ->add('contenu')
-            ->add('image')
             ->add('teaser')
+            ->add('presentation')
+            ->add('ressources')
+            ->add('dossierTechnique')
+            ->add('configSources')
+            ->add('activitesCompetences')
+            ->add('bilan')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),

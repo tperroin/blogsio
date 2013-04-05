@@ -11,7 +11,6 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
-            'navbar' => array($this, 'block_navbar'),
             'corps' => array($this, 'block_corps'),
             'titre_date' => array($this, 'block_titre_date'),
             'resume' => array($this, 'block_resume'),
@@ -34,34 +33,10 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
         echo "Blog";
     }
 
-    // line 5
-    public function block_navbar($context, array $blocks = array())
-    {
-        echo " 
-        <div class=\"twelve columns\">
-            <ul class=\"nav-bar\">
-                <li><a href=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("homepage"), "html", null, true);
-        echo "\">Accueil</a></li>
-                <li class=\"active\"><a href=\"";
-        // line 9
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sonata_news_home"), "html", null, true);
-        echo "\">Blog</a></li>
-                <li><a href=\"";
-        // line 10
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("tperroin_projets"), "html", null, true);
-        echo "\">Projets</a></li>
-                <li><a href=\"#\">Contact Us</a></li>
-            </ul>
-        </div>
-    ";
-    }
-
-    // line 16
+    // line 6
     public function block_corps($context, array $blocks = array())
     {
-        // line 17
+        // line 7
         echo "    ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "pager"), "getResults", array(), "method"));
@@ -80,15 +55,15 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
-            // line 18
+            // line 8
             echo "        
         ";
-            // line 19
+            // line 9
             $this->displayBlock('titre_date', $context, $blocks);
-            // line 30
+            // line 20
             echo "        ";
             $this->displayBlock('resume', $context, $blocks);
-            // line 45
+            // line 35
             echo "  
     ";
             $context['_iterated'] = true;
@@ -102,10 +77,17 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
             }
         }
         if (!$context['_iterated']) {
-            // line 47
-            echo "        ";
+            // line 37
+            echo "            <div class=\"row\">
+                <div class=\"large-6 columns\">
+                    <div class=\"row\">
+        ";
+            // line 40
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("no_post_found", array(), "SonataNewsBundle"), "html", null, true);
             echo "
+                            </div>
+                </div>
+            </div>
     ";
         }
         $_parent = $context['_parent'];
@@ -113,22 +95,22 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
     }
 
-    // line 19
+    // line 9
     public function block_titre_date($context, array $blocks = array())
     {
-        // line 20
+        // line 10
         echo "            <div class=\"row\">
-                <div class=\"six columns\">
+                <div class=\"large-6 columns\">
                     <div class=\"row\">
                         
                         <h2><a href=\"";
-        // line 24
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("sonata_news_view", array("permalink" => $this->env->getExtension('sonata_news')->generatePermalink($this->getContext($context, "post")))), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "post"), "title"), "html", null, true);
         echo "</a></h2>
                         ";
-        // line 25
+        // line 15
         echo $this->env->getExtension('sonata_intl_datetime')->formatDate($this->getAttribute($this->getContext($context, "post"), "publicationDateStart"));
         echo "
                     </div>
@@ -137,18 +119,18 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
         ";
     }
 
-    // line 30
+    // line 20
     public function block_resume($context, array $blocks = array())
     {
-        // line 31
+        // line 21
         echo "    
             &nbsp;
             
             <div class=\"row\">
-                <div class=\"six columns\">
+                <div class=\"large-6 columns\">
                     <div class=\"row\">
                         ";
-        // line 37
+        // line 27
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "post"), "abstract"), "html", null, true);
         echo "
                     </div>
@@ -172,6 +154,6 @@ class __TwigTemplate_07c8e7ec1aac751115975ae404ab3590 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  152 => 37,  144 => 31,  141 => 30,  132 => 25,  126 => 24,  120 => 20,  117 => 19,  106 => 47,  92 => 45,  89 => 30,  87 => 19,  84 => 18,  65 => 17,  62 => 16,  53 => 10,  49 => 9,  45 => 8,  38 => 5,  32 => 3,);
+        return array (  134 => 27,  126 => 21,  123 => 20,  114 => 15,  108 => 14,  102 => 10,  99 => 9,  86 => 40,  81 => 37,  67 => 35,  64 => 20,  62 => 9,  59 => 8,  40 => 7,  37 => 6,  31 => 3,);
     }
 }

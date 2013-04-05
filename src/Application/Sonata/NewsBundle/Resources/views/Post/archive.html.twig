@@ -2,22 +2,13 @@
  
     {% block title %}Blog{% endblock %}
  
-    {% block navbar %} 
-        <div class="twelve columns">
-            <ul class="nav-bar">
-                <li><a href="{{ path('homepage')}}">Accueil</a></li>
-                <li class="active"><a href="{{ path('sonata_news_home') }}">Blog</a></li>
-                <li><a href="{{ path('tperroin_projets')}}">Projets</a></li>
-            </ul>
-        </div>
-    {% endblock %}
     
 {% block corps %}
     {% for post in pager.getResults() %}
         
         {% block titre_date %}
             <div class="row">
-                <div class="six columns">
+                <div class="large-6 columns">
                     <div class="row">
                         
                         <h2><a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a></h2>
@@ -31,7 +22,7 @@
             &nbsp;
             
             <div class="row">
-                <div class="six columns">
+                <div class="large-6 columns">
                     <div class="row">
                         {{ post.abstract }}
                     </div>
@@ -43,6 +34,12 @@
         {% endblock %}
   
     {% else %}
+            <div class="row">
+                <div class="large-6 columns">
+                    <div class="row">
         {{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}
+                            </div>
+                </div>
+            </div>
     {% endfor %}
 {% endblock %}

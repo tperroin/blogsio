@@ -1,20 +1,12 @@
 {% extends 'SonataNewsBundle:Post:archive.html.twig' %}
 {% block title %}Projets {{ parent() }}{% endblock %}
  
-    {% block navbar %} 
-        <div class="twelve columns">
-            <ul class="nav-bar">
-                <li><a href="{{ path('homepage')}}">Accueil</a></li>
-                <li><a href="{{ path('sonata_news_home') }}">Blog</a></li>
-                <li class="active"><a href="{{ path('tperroin_projets')}}">Projets</a></li>
-            </ul>
-        </div>
-    {% endblock %}
+    
 
     {% block image_accueil %}  {% endblock %}
 
     {% block corps %}
-
+<div class="blocBlanc">
         {% for entity in entities %}
 
         {% if loop.index is divisibleby(2) %}
@@ -42,7 +34,7 @@
          {% endfor %}
           
           
-        
+    </div>  
 
 
 

@@ -1,17 +1,5 @@
 {% extends '::layout.html.twig' %}
 
-{% block navbar %} 
-
-    <div class="twelve columns">
-        <ul class="nav-bar">
-            <li><a href="{{ path('homepage')}}">Accueil</a></li>
-            <li class="active"><a href="{{ path('sonata_news_home') }}">Blog</a></li>
-            <li><a href="{{ path('tperroin_projets')}}">Projets</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </div>
-
-{% endblock %}
 
 {% block corps %}
 
@@ -35,7 +23,7 @@
 
         &nbsp;
 
-        <div class="row">
+        <div class="row blocBlanc">
             <div class="six columns">
                 <div class="row">
                     {{ post.content|raw }}

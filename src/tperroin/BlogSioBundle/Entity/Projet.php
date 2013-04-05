@@ -22,9 +22,23 @@ class Projet
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="teaser", type="string", length=255)
+     */
+    private $teaser;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date")
      */
     private $date;
 
@@ -38,30 +52,44 @@ class Projet
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="string", length=255)
+     * @ORM\Column(name="presentation", type="string", length=255)
      */
-    private $contenu;
+    private $presentation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="teaser", type="string", length=255)
+     * @ORM\Column(name="ressources", type="string", length=255)
      */
-    private $teaser;
+    private $ressources;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="dossierTechnique", type="string", length=255)
      */
-    private $titre;
+    private $dossierTechnique;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="blob")
+     * @ORM\Column(name="configSources", type="string", length=255)
      */
-    private $image;
+    private $configSources;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="activitesCompetences", type="string", length=255)
+     */
+    private $activitesCompetences;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bilan", type="string", length=255)
+     */
+    private $bilan;
 
 
     /**
@@ -72,6 +100,52 @@ class Projet
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Projet
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set teaser
+     *
+     * @param string $teaser
+     * @return Projet
+     */
+    public function setTeaser($teaser)
+    {
+        $this->teaser = $teaser;
+    
+        return $this;
+    }
+
+    /**
+     * Get teaser
+     *
+     * @return string 
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
     }
 
     /**
@@ -121,100 +195,140 @@ class Projet
     }
 
     /**
-     * Set contenu
+     * Set presentation
      *
-     * @param string $contenu
+     * @param string $presentation
      * @return Projet
      */
-    public function setContenu($contenu)
+    public function setPresentation($presentation)
     {
-        $this->contenu = $contenu;
+        $this->presentation = $presentation;
     
         return $this;
     }
 
     /**
-     * Get contenu
+     * Get presentation
      *
      * @return string 
      */
-    public function getContenu()
+    public function getPresentation()
     {
-        return $this->contenu;
+        return $this->presentation;
     }
 
     /**
-     * Set teaser
+     * Set ressources
      *
-     * @param string $teaser
+     * @param string $ressources
      * @return Projet
      */
-    public function setTeaser($teaser)
+    public function setRessources($ressources)
     {
-        $this->teaser = $teaser;
+        $this->ressources = $ressources;
     
         return $this;
     }
 
     /**
-     * Get teaser
+     * Get ressources
      *
      * @return string 
      */
-    public function getTeaser()
+    public function getRessources()
     {
-        return $this->teaser;
+        return $this->ressources;
     }
 
-    
     /**
-     * Set titre
+     * Set dossierTechnique
      *
-     * @param string $titre
+     * @param string $dossierTechnique
      * @return Projet
      */
-    public function setTitre($titre)
+    public function setDossierTechnique($dossierTechnique)
     {
-        $this->titre = $titre;
+        $this->dossierTechnique = $dossierTechnique;
     
         return $this;
     }
 
     /**
-     * Get titre
+     * Get dossierTechnique
      *
      * @return string 
      */
-    public function getTitre()
+    public function getDossierTechnique()
     {
-        return $this->titre;
+        return $this->dossierTechnique;
     }
 
     /**
-     * Set image
+     * Set configSources
      *
-     * @param string $image
+     * @param string $configSources
      * @return Projet
      */
-    public function setImage($image)
+    public function setConfigSources($configSources)
     {
-        $this->image = $image;
+        $this->configSources = $configSources;
     
         return $this;
     }
 
     /**
-     * Get image
+     * Get configSources
      *
      * @return string 
      */
-    public function getImage()
+    public function getConfigSources()
     {
-        return $this->image;
+        return $this->configSources;
     }
-    
-    public function __toString()
+
+    /**
+     * Set activitesCompetences
+     *
+     * @param string $activitesCompetences
+     * @return Projet
+     */
+    public function setActivitesCompetences($activitesCompetences)
     {
-        return $this->id.' '.$this->titre;
+        $this->activitesCompetences = $activitesCompetences;
+    
+        return $this;
+    }
+
+    /**
+     * Get activitesCompetences
+     *
+     * @return string 
+     */
+    public function getActivitesCompetences()
+    {
+        return $this->activitesCompetences;
+    }
+
+    /**
+     * Set bilan
+     *
+     * @param string $bilan
+     * @return Projet
+     */
+    public function setBilan($bilan)
+    {
+        $this->bilan = $bilan;
+    
+        return $this;
+    }
+
+    /**
+     * Get bilan
+     *
+     * @return string 
+     */
+    public function getBilan()
+    {
+        return $this->bilan;
     }
 }

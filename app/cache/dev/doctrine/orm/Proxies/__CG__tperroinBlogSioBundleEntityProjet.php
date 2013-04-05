@@ -51,6 +51,30 @@ class Projet extends \tperroin\BlogSioBundle\Entity\Projet implements \Doctrine\
         return parent::getId();
     }
 
+    public function setTitre($titre)
+    {
+        $this->__load();
+        return parent::setTitre($titre);
+    }
+
+    public function getTitre()
+    {
+        $this->__load();
+        return parent::getTitre();
+    }
+
+    public function setTeaser($teaser)
+    {
+        $this->__load();
+        return parent::setTeaser($teaser);
+    }
+
+    public function getTeaser()
+    {
+        $this->__load();
+        return parent::getTeaser();
+    }
+
     public function setDate($date)
     {
         $this->__load();
@@ -75,64 +99,82 @@ class Projet extends \tperroin\BlogSioBundle\Entity\Projet implements \Doctrine\
         return parent::getAuteur();
     }
 
-    public function setContenu($contenu)
+    public function setPresentation($presentation)
     {
         $this->__load();
-        return parent::setContenu($contenu);
+        return parent::setPresentation($presentation);
     }
 
-    public function getContenu()
+    public function getPresentation()
     {
         $this->__load();
-        return parent::getContenu();
+        return parent::getPresentation();
     }
 
-    public function setTeaser($teaser)
+    public function setRessources($ressources)
     {
         $this->__load();
-        return parent::setTeaser($teaser);
+        return parent::setRessources($ressources);
     }
 
-    public function getTeaser()
+    public function getRessources()
     {
         $this->__load();
-        return parent::getTeaser();
+        return parent::getRessources();
     }
 
-    public function setTitre($titre)
+    public function setDossierTechnique($dossierTechnique)
     {
         $this->__load();
-        return parent::setTitre($titre);
+        return parent::setDossierTechnique($dossierTechnique);
     }
 
-    public function getTitre()
+    public function getDossierTechnique()
     {
         $this->__load();
-        return parent::getTitre();
+        return parent::getDossierTechnique();
     }
 
-    public function setImage($image)
+    public function setConfigSources($configSources)
     {
         $this->__load();
-        return parent::setImage($image);
+        return parent::setConfigSources($configSources);
     }
 
-    public function getImage()
+    public function getConfigSources()
     {
         $this->__load();
-        return parent::getImage();
+        return parent::getConfigSources();
     }
 
-    public function __toString()
+    public function setActivitesCompetences($activitesCompetences)
     {
         $this->__load();
-        return parent::__toString();
+        return parent::setActivitesCompetences($activitesCompetences);
+    }
+
+    public function getActivitesCompetences()
+    {
+        $this->__load();
+        return parent::getActivitesCompetences();
+    }
+
+    public function setBilan($bilan)
+    {
+        $this->__load();
+        return parent::setBilan($bilan);
+    }
+
+    public function getBilan()
+    {
+        $this->__load();
+        return parent::getBilan();
     }
 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'date', 'auteur', 'contenu', 'teaser', 'titre', 'image');
+        return array('__isInitialized__', 'id', 'titre', 'teaser', 'date', 'auteur', 'presentation', 'ressources', 'dossierTechnique', 'configSources', 'activitesCompetences', 'bilan');
     }
 
     public function __clone()
